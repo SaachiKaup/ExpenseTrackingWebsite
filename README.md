@@ -1,2 +1,2 @@
 # ExpenseTrackingWebsite
-Expense Tracking Website made using NextJS and Prisma ORM with a Postgresql
+Expense Tracking Website made using NextJS. Backend is made with Postgres using the Prisma ORM
