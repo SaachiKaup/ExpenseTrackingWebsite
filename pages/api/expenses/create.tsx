@@ -6,17 +6,18 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
     
     
     try {
-        const {users: userData} = req.body
-        const user = await prisma.users.create({
+        const {expenses: expenseData} = req.body
+        
+        const expense = await prisma.expenses.create({
         data: {
-            user_id: userData.user_id,
-            first_name: userData.first_name,
-            last_name: userData.last_name,
-            age: userData.age
+            user_id: expenseData.user_id,
+            cat_id: expenseData.cat_id,
+            daily_amt: expenseData.daily_amt,
+            expense_date: new Date()
         },
         });
     
-        res.status(201).json(user);
+        res.status(201).json(expense);
     } catch (error) {
         res.status(500).json({ error: error.message });
     } finally {

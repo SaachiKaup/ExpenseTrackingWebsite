@@ -7,14 +7,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
     
     try {
         const {users: userData} = req.body
-        const user = await prisma.users.create({
-        data: {
-            user_id: userData.user_id,
-            first_name: userData.first_name,
-            last_name: userData.last_name,
-            age: userData.age
-        },
-        });
+        const user = await prisma.set_bound.findMany({});
     
         res.status(201).json(user);
     } catch (error) {
