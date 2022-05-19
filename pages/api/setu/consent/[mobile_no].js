@@ -7,7 +7,7 @@ export default async function (req, res) {
     var data = JSON.stringify({
         "Detail": {
             "consentStart": new Date().toISOString(),
-            "consentExpiry": "2022-05-20T05:44:53.822Z",
+            "consentExpiry": "2022-12-31T05:44:53.822Z",
             "Customer": {
             "id": mobile_no + "@onemoney" //use user input here
             },
