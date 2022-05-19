@@ -23,7 +23,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "pages/src/data/BankTransactionsData.js", "pages/api/setu/consent.js"  ],
   "exclude": [
     "node_modules"
   ]
