@@ -75,7 +75,7 @@ function DisplaySetuTransactions({transaction}) {
       console.log("Transaction amt in handleClick: ", transaction.amount);
       currentTransactions.selectedTransactions = 
       currentTransactions.selectedTransactions.filter(selected_transaction =>
-        selected_transaction[0] != transaction.amount)
+        selected_transaction[0] != parseInt(transaction.amount))
       console.log("Current Transactions: ", currentTransactions.selectedTransactions);
       setCategory(event.target.innerText);
       setAnchorEl(event.target); //Used to be currentTarget
@@ -89,7 +89,7 @@ function DisplaySetuTransactions({transaction}) {
         
         currentTransactions.selectedTransactions = currentTransactions.selectedTransactions
         .filter(api_transaction => 
-          (api_transaction[0] !== transaction.amount && api_transaction[1] !== category))
+          (api_transaction[0] !== parseInt(transaction.amount) && api_transaction[1] !== category))
         setCategory("Categories");
         setChecked(false)
           /*{
@@ -112,7 +112,7 @@ function DisplaySetuTransactions({transaction}) {
         console.log("Transaction to be logged:\nexpense: ", transaction.amount)
         console.log("Category: ", selected_category)
         console.log("All Categories: ", backend_categories)
-        currentTransactions.selectedTransactions = [...currentTransactions.selectedTransactions, [transaction.amount, selected_category]]
+        currentTransactions.selectedTransactions = [...currentTransactions.selectedTransactions, [parseInt(transaction.amount), selected_category]]
         console.log("All current transactions: ", currentTransactions.selectedTransactions)
         
         //Will employ while sending categories to backend

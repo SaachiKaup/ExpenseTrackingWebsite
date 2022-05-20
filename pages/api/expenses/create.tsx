@@ -22,6 +22,6 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
         console.error(error);
         res.status(500).json({ error: error.message });
     } finally {
-        await prisma.$disconnect();
+        //await prisma.$disconnect();
     }
 }
