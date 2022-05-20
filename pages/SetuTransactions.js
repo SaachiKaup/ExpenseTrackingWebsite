@@ -282,7 +282,7 @@ function SetuTransactions() {
             console.log("Each Selected Transaction: ", selected_transaction)
             console.log("Categories: ", backendCategories)
             CreateExpenseInBackend(selected_transaction[0], 
-                selected_transaction[1], backendCategories)
+                selected_transaction[1], backendCategories, selected_transaction[2])
         })
         //Send Expenses to Backend
     }

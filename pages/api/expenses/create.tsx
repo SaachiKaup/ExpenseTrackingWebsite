@@ -13,7 +13,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
             user_id: expenseData.user_id,
             cat_id: expenseData.cat_id,
             daily_amt: expenseData.daily_amt,
-            expense_date:  new Date()
+            expense_date: expenseData.expense_date
         },
         });
     

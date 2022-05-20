@@ -60,7 +60,7 @@ function RecentExpenses({expense, backendCategories, handleDelete}) {
               </StyledTableCell>
               <StyledTableCell align="center">{expense.daily_amt}</StyledTableCell>
               <StyledTableCell align="center">
-                {console.log('backendCategories: ', backendCategories)}
+                {/*console.log('backendCategories: ', backendCategories)*/}
                 {backendCategories[expense.cat_id - 1]}
                 </StyledTableCell>
               <TableCell align="center">{

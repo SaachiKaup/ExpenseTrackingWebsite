@@ -46,6 +46,7 @@ function DisplaySetuTransactions({transaction}) {
     const open = Boolean(anchorEl);
     const [btnDisabled, setBtnDisabled] = useState(true)
     const [checked, setChecked] = useState(false);
+    const [transactionDate, setTransactionDate] = useState('');
     const currentTransactions = useContext(GetSelectedTransactions);
 
     console.log("Current Transactions: ", currentTransactions);
@@ -79,6 +80,8 @@ function DisplaySetuTransactions({transaction}) {
       console.log("Current Transactions: ", currentTransactions.selectedTransactions);
       setCategory(event.target.innerText);
       setAnchorEl(event.target); //Used to be currentTarget
+      //setTransactionDate(transaction.transactionTimestamp);
+      //console.log("Transactions Date: ", transaction.transactionTimestamp, "Typeof str: ", typeof transaction.transactionTimestamp);
       setChecked(true)
     };
 
@@ -110,9 +113,10 @@ function DisplaySetuTransactions({transaction}) {
         let selected_category = e.target.innerText
         setCategory(selected_category);
         console.log("Transaction to be logged:\nexpense: ", transaction.amount)
+        console.log("Date of transactions: ", transaction.transactionTimestamp)
         console.log("Category: ", selected_category)
         console.log("All Categories: ", backend_categories)
-        currentTransactions.selectedTransactions = [...currentTransactions.selectedTransactions, [parseInt(transaction.amount), selected_category]]
+        currentTransactions.selectedTransactions = [...currentTransactions.selectedTransactions, [parseInt(transaction.amount), selected_category, transaction.transactionTimestamp]]
         console.log("All current transactions: ", currentTransactions.selectedTransactions)
         
         //Will employ while sending categories to backend
