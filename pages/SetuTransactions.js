@@ -131,8 +131,8 @@ function SetuTransactions() {
                 //setConsentID(consent_id)
                 //setFetchedConsent('')
                 window.sessionStorage.setItem('consentID', consent_id)
-                //window.sessionStorage.setItem('fetchedConsent', '')
-                //window.location.assign('https://fiu-uat.setu.co/consents/webview/' + consent_id)
+                window.sessionStorage.setItem('fetchedConsent', '')
+                window.location.assign('https://fiu-uat.setu.co/consents/webview/' + consent_id)
                 console.log('c_id After: ', consent_id)
             }
             if (!(check_null_or_empty(userMobileNo)) && !check_null_or_empty(consentID)) { 
@@ -235,7 +235,7 @@ function SetuTransactions() {
         if (check_null_or_empty(consentID)) { 
             let consent_id = get_consent_function(userMobileNo)
             console.log('Consent ID from Function: ', consent_id)
-            /*
+            
             const url_redirect_promise = get_promise('/api/setu/consent/', userMobileNo)
             url_redirect_promise.then(res => {
                 console.log('Promise Response: ', res)
@@ -259,13 +259,13 @@ function SetuTransactions() {
                     sessionStorage.setItem('fetchedConsent', fetchedConsent)
                     console.log('Fetched Consent from Session Storage: ', sessionStorage.getItem('fetchedConsent'))
                     })
-
+                        
             if (typeof window !== undefined) {
-                //window.location.assign(req_url)
+                window.location.assign(req_url)
                 }
             }).catch(err => {
                 console.log('Error in promise: ', err)
-            })*/
+            })
         }
         else {  
             console.log('Consent ID already exists: ', consentID)
