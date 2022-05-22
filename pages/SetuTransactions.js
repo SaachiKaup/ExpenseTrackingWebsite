@@ -108,66 +108,47 @@ const get_transaction_data = (dataSessionID) => {
 }
 
 function SetuTransactions() {
+    const [consentID, setConsentID] = useState('')
+    const [userMobileNo, setUserMobileNo] = useState('')
     const [fetchedConsent, setFetchedConsent] = useState('') //used to be Not Requested
-    const [consentID, setConsentID] = useState('') 
-    const [userMobileNo, setUserMobileNo] = useState('') 
-    const [btnDisabled, setBtnDisabled] = useState(true)
     const [dataSessionID, setDataSessionID] = useState('') 
     const [transactionData, setTransactionData] = useState([{}, {}])
+    const [btnDisabled, setBtnDisabled] = useState(true)
     const [expensesButton, setExpensesButton] = useState(false)
     const [backendCategories, setBackendCategories] = useState([])
     const currentTransactions = useContext(GetSelectedTransactions)
     
-    const loadDataOnlyOnce = useCallback(
-      () => {
-        console.log("I need a mobile Number: ", userMobileNo)
-      },
-      [userMobileNo]
-    )
-    
-    useEffect(async () => {
-        console.log("Main Component transaction data: ", currentTransactions.selectedTransactions)
-        BackendCategories(setBackendCategories)
-        console.log("BackendCategories: ", backendCategories)
-        if (typeof window !== 'undefined') { 
+    useEffect(() => {
+        if (typeof window !== undefined) {
+            //State updates asynchronously, no difference, just good to have
+            if (!check_null_or_empty(window.localStorage.getItem('userMobileNo'))) {
+                console.log("Mobile Present")
+                setUserMobileNo(window.localStorage.getItem('userMobileNo'))
+            }
             if (!check_null_or_empty(window.localStorage.getItem('consentID'))) {
+                console.log("In Storage ConsentID Present:", window.localStorage.getItem('consentID'))
                 let consent_id_from_storage = window.localStorage.getItem('consentID')
                 setConsentID(consent_id_from_storage)
-                console.log('ConsentID from localStorage: ', consentID)
-                console.log("Called Only Once")
-                let consent_status_promise = get_promise('/api/setu/check_consent/', consent_id_from_storage)
-                consent_status_promise.then(res => {
-                    console.log('Consent Status: ', res.data)
-                    //setFetchedConsent(res.data)
-                    //console.log("Fetched Consent Status: ", fetchedConsent)
-                    if (res.data == 'ACTIVE') {
-                        //console.log("Consent is ACTIVE")
-                        setFetchedConsent('ACTIVE')
-                        console.log("fetchedConsent: ", fetchedConsent)
-                        let url_data_session_promise = get_promise('/api/setu/data_session_start/', consentID)
-                        url_data_session_promise.then(data_session_res => {
-                            console.log('Data Session ID: ', data_session_res.data)
-                            setDataSessionID(res.data)
-                            if (data_session_res.data != 'No Data Session') {
-                                let url_data_promise = get_promise('/api/setu/get_data/', data_session_res.data)
-                                url_data_promise.then(res => {
-                                    console.log('Data: ', res.data)
-                                    setTransactionData(res.data)
-                                    console.log("Transaction Data: ", transactionData)
-                                }).catch(err => err)
-                            }
-                        }).catch(err => err)
-                    }
-                    else {
-                        console.log("Alert please approve consent")
-                        //alert("Please approve consent")
-                    }
-                }).catch(err => {
-                    console.log("Error in Consent Status Promise: ", err)
-                })
-            }       
+                console.log("After getting from storage CID: ", consentID)  
+            }
+            
+            if (!check_null_or_empty(window.localStorage.getItem('fetchedConsent'))) {
+                let consent_status_from_storage = window.localStorage.getItem('fetchedConsent')
+                setFetchedConsent(consent_status_from_storage)
+                console.log('Fetched Consent: ', fetchedConsent)
+                if (consent_status_from_storage == 'ACTIVE') {
+                    //get_transaction_data()
+                }
+            }
+            else {
+                console.log('Please go back to the previous page and request consent again')
+            }
         }
-    }, []) 
+    }, []);
+
+    useEffect(() => {
+        console.log("Fetch Consent updated: ", fetchedConsent)
+    }, [fetchedConsent])
 
     const handleChange = (e) => {
         if (e.target.value.length == 10) {
@@ -186,48 +167,8 @@ function SetuTransactions() {
     }
 
     const handleSubmit = (e) => {
-        console.log('Submit event: ', e)
-        if (check_null_or_empty(consentID)) { 
-            let consent_id = get_consent_function(userMobileNo)
-            console.log('Consent ID from Function: ', consent_id)
-            
-            const url_redirect_promise = get_promise('/api/setu/consent/', userMobileNo)
-            url_redirect_promise.then(res => {
-                console.log('Promise Response: ', res)
-                let req_url = res.data
-                console.log('URL in Promise', req_url)
-                const consent_id = req_url.slice(req_url.indexOf('webview/') + 8, req_url.length)
-                setConsentID(consent_id)
-                sessionStorage.setItem('consentID', consent_id)
-                console.log('Consent ID  from state: ', consentID)
-                console.log('Consent ID from session Storage: ', sessionStorage.getItem('consentID'))
-                
-                const check_consent_status = new Promise (async (resolve, reject) => {
-                    let consent_status = await axios('/api/setu/check_consent/' + consent_id)
-                    return resolve(consent_status)
-                   })
-                
-                check_consent_status.then(res => {
-                    console.log('Consent Status: ', res.data)
-                    setFetchedConsent(res.data) //should be pending or accepted after request
-                    console.log('Fetched Consent from State: ', fetchedConsent)
-                    sessionStorage.setItem('fetchedConsent', fetchedConsent)
-                    console.log('Fetched Consent from Session Storage: ', sessionStorage.getItem('fetchedConsent'))
-                    })
-                        
-            if (typeof window !== undefined) {
-                window.location.assign(req_url)
-                }
-            }).catch(err => {
-                console.log('Error in promise: ', err)
-            })
-        }
-        else {  
-            console.log('Consent ID already exists: ', consentID)
-            if (fetchedConsent !== 'ACTIVE') {
-                alert('Consent is not ACTIVE')
-            }
-        }
+        console.log("Submit Event:", e)
+        
     }
 
     const addExpenses = () => {
@@ -243,7 +184,7 @@ function SetuTransactions() {
     }
     return (
         <>
-        {('AC' !== 'ACTIVE')? (
+        {(fetchedConsent !== 'ACTIVE')? (
         <Card>
             <TextField
                 id="mobile-no-input"
@@ -279,10 +220,9 @@ function SetuTransactions() {
                         <StyledTableCell align="center">Selected</StyledTableCell>
                     </TableRow>
                 </TableHead>
-                {console.log('transaction data while rendering is ?: ', transactionData[0].amount == undefined)}
-                {console.log("transaction data: ", transactionData)}
+               
                 <TableBody>
-                    {transactionData.map(transaction => (
+                    {setu_transaction_data.map(transaction => (
                         <>
                             <DisplaySetuTransactions transaction = {transaction}/>
                         </>

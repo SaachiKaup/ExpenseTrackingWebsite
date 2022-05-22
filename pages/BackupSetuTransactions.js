@@ -104,7 +104,14 @@ function SetuTransactions() {
     const [backendCategories, setBackendCategories] = useState([])
     const currentTransactions = useContext(GetSelectedTransactions)
 
-    
+     
+    /*const loadDataOnlyOnce = useCallback(
+      () => {
+        console.log("I need a mobile Number: ", userMobileNo)
+      },
+      [userMobileNo]
+    )*/
+
     useEffect(async () => {
         console.log("Main Component transaction data: ", currentTransactions.selectedTransactions)
         BackendCategories(setBackendCategories)
@@ -358,6 +365,51 @@ function SetuTransactions() {
 }
 
 export default SetuTransactions
+//Alt Use Effect that only works till data session ID
+
+    /*useEffect(async () => {
+        console.log("Main Component transaction data: ", currentTransactions.selectedTransactions)
+        BackendCategories(setBackendCategories)
+        console.log("BackendCategories: ", backendCategories)
+        if (typeof window !== 'undefined') { 
+            if (!check_null_or_empty(window.localStorage.getItem('consentID'))) {
+                let consent_id_from_storage = window.localStorage.getItem('consentID')
+                setConsentID(consent_id_from_storage)
+                console.log('ConsentID from localStorage: ', consentID)
+                console.log("Called Only Once")
+                let consent_status_promise = get_promise('/api/setu/check_consent/', consent_id_from_storage)
+                consent_status_promise.then(res => {
+                    console.log('Consent Status: ', res.data)
+                    //setFetchedConsent(res.data)
+                    //console.log("Fetched Consent Status: ", fetchedConsent)
+                    if (res.data == 'ACTIVE') {
+                        //console.log("Consent is ACTIVE")
+                        setFetchedConsent('ACTIVE')
+                        console.log("fetchedConsent: ", fetchedConsent)
+                        let url_data_session_promise = get_promise('/api/setu/data_session_start/', consent_id_from_storage)
+                        url_data_session_promise.then(data_session_res => {
+                            console.log('Data Session ID: ', data_session_res.data)
+                            setDataSessionID(data_session_res.data)
+                            if (data_session_res.data != 'No Data Session') {
+                                let url_data_promise = get_promise('/api/setu/get_data/', data_session_res.data)
+                                url_data_promise.then(transaction_res => {
+                                    console.log('Data: ', transaction_res.data)
+                                    setTransactionData(transaction_res.data)
+                                    console.log("Transaction Data: ", transactionData)
+                                }).catch(err => err)
+                            }
+                        }).catch(err => err)
+                    }
+                    else {
+                        console.log("Alert please approve consent")
+                        //alert("Please approve consent")
+                    }
+                }).catch(err => {
+                    console.log("Error in Consent Status Promise: ", err)
+                })
+            }       
+        }
+    }, []) */
 
 //old useEffect(2 times) code
 
