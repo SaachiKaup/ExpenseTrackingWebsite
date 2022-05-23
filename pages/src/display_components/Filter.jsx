@@ -28,8 +28,8 @@ function Filter() {
                 
                 TransitionComponent={Fade}>
       
-            {filter_values.map(category => (
-                <MenuItem>{category}</MenuItem>
+            {filter_values.map((category, indx) => (
+                <MenuItem key = {indx}>{category}</MenuItem>
             ))}
             </Menu>
         </div>

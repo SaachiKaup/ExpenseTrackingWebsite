@@ -100,8 +100,8 @@ function Categories() {
         TransitionComponent={Fade}
       >
       
-        {backend_categories.map(category => (
-          <MenuItem onClick={handleClose}>{category}</MenuItem>
+        {backend_categories.map((category, indx) => (
+          <MenuItem key = {indx} onClick={handleClose}>{category}</MenuItem>
         ))}
         
       </Menu>

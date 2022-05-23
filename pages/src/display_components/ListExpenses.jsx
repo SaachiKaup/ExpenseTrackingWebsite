@@ -38,8 +38,8 @@ function ListExpenses({expenseData, backendCategories, handleDelete}) {
         <TableBody>
          
            {    //takes a parameter, returns JSX in round brackets
-               expenseData.map((expense) => (
-                    <RecentExpenses expense = {expense}
+               expenseData.map((expense, indx) => (
+                    <RecentExpenses key = {indx} expense = {expense}
                                     backendCategories = {backendCategories}
                                     handleDelete = {handleDelete}/>
                ))
