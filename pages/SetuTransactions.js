@@ -3,7 +3,7 @@ import axios from 'axios'
 import Card from './src/shared/Card'
 import Button from './src/shared/Button'
 import TextField from '@mui/material/TextField'
-import setu_transaction_data from './src/data/TransactionDataSetu'
+import setu_transaction_data from './src/data/TransactionDataSetu.json'
 import { Table, 
         TableHead, 
         TableRow, 
@@ -210,7 +210,7 @@ function SetuTransactions() {
             <Table> 
                 <TableHead >
                     <TableRow >
-                        <StyledTableCell align="centre">
+                        <StyledTableCell align="center">
                         Amount
                         </StyledTableCell>
                         <StyledTableCell align="center">Transaction Date</StyledTableCell>
@@ -222,9 +222,9 @@ function SetuTransactions() {
                 </TableHead>
                
                 <TableBody>
-                    {setu_transaction_data.map(transaction => (
+                    {setu_transaction_data.setu_transaction_data.map((transaction, indx) => (
                         <>
-                            <DisplaySetuTransactions transaction = {transaction}/>
+                            <DisplaySetuTransactions key = {indx} transaction = {transaction}/>
                         </>
                     ))}    
                     <TableRow>
