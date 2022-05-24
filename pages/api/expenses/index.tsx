@@ -4,7 +4,7 @@ import { getRequestData } from "./getRequestData";
 
 
 
-export default async function (req: NextApiRequest, res: NextApiResponse) {
+export default async function get_expenses(req: NextApiRequest, res: NextApiResponse) {
     const prisma = new PrismaClient({log: ["query"]});
     console.log('u_id before parse', req.query.user_id)
     const { req_expense_id, req_user_id, req_cat_id, req_date } = getRequestData(req);

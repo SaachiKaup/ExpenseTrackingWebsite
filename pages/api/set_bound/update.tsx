@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { PrismaClient } from "@prisma/client";
 
-export default async function (req: NextApiRequest, res: NextApiResponse) {
+export default async function update_bound(req: NextApiRequest, res: NextApiResponse) {
     const prisma = new PrismaClient({log: ["query"]});
     console.log(req.query, req.body)
     const req_user_id = Number(req.query.user_id) || undefined;

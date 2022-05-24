@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { PrismaClient } from "@prisma/client";
 
-export default async function (req: NextApiRequest, res: NextApiResponse) {
+export default async function get_categories(req: NextApiRequest, res: NextApiResponse) {
     const prisma = new PrismaClient({log: ["query"]});
     const req_cat_id = Number(req.query.cat_id) || undefined;
     
