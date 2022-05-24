@@ -30,3 +30,5 @@ export async function CreateExpenseInBackend(expense_inserted, category, categor
         );
     return expense_data || null;
 }
+
+//export default CreateExpenseInBackend;

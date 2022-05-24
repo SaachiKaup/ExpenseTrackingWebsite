@@ -14,7 +14,8 @@ import { Table,
         Typography} from '@mui/material'
 import DisplaySetuTransactions from './src/display_components/setu_components/DisplaySetuTransactions'
 import GetSelectedTransactions from './src/display_components/GetSelectedTransactions'
-import { CreateExpenseInBackend } from './src/display_components/CreateExpenseInBackend';
+//defaultimport AwaitCreateExpenseInBackend from './src/display_components/CreateExpenseInBackend';
+import { CreateExpenseInBackend } from './src/display_components/CreateExpenseInBackend'
 import BackendCategories from './src/data/BackendCategories'
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -117,8 +118,10 @@ function SetuTransactions() {
     const [expensesButton, setExpensesButton] = useState(false)
     const [backendCategories, setBackendCategories] = useState([])
     const currentTransactions = useContext(GetSelectedTransactions)
-    
+    //const CreateExpenseInBackend = async () => await AwaitCreateExpenseInBackend()
     useEffect(() => {
+        getCategoriesFromState()
+        console.log("backendCategories: ", backendCategories)
         if (typeof window !== undefined) {
             //State updates asynchronously, no difference, just good to have
             if (!check_null_or_empty(window.localStorage.getItem('userMobileNo'))) {
@@ -146,6 +149,22 @@ function SetuTransactions() {
         }
     }, []);
 
+    const getCategoriesFromState = () => {
+      const axios = require('axios');
+      const base_url = 'http://localhost:3000'
+      let backend_categories = [];
+      axios.get('http://localhost:3000/api/categories').then(
+            res => {
+              res.data.forEach(category => {
+                  backend_categories.push(category.cat_name)
+                  //console.log("Backend Categories:", backend_categories)
+              });
+              setBackendCategories(backend_categories);
+            }).catch(err => {
+              console.log(err);
+            })
+    }
+
     useEffect(() => {
         console.log("Fetch Consent updated: ", fetchedConsent)
     }, [fetchedConsent])
@@ -171,9 +190,9 @@ function SetuTransactions() {
         
     }
 
-    const addExpenses = () => {
+    const addExpenses = async () => {
         console.log('Add Expenses: ', currentTransactions.selectedTransactions)
-        console.log(CreateExpenseInBackend)
+        console.log(CreateExpenseInBackend) //Await
         currentTransactions.selectedTransactions.forEach(selected_transaction => {
             console.log("Each Selected Transaction: ", selected_transaction)
             console.log("Categories: ", backendCategories)
