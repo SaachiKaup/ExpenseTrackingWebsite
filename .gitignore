@@ -36,3 +36,4 @@ yarn-error.log*
 
 #files
 /pages/src/display_components/.SetBound.jsx
+/pages/.ConnectBankAccount.js
