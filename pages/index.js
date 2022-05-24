@@ -14,18 +14,13 @@ export default function Home() {
         <ul>
           <li>
             <Link href = '/App'>
-              <a>Go to App</a>
+              <a>App</a>
             </Link>
           </li>
           <li>
             <Link href='/RecentExpensesPage' >
               <a>View Recent Expenses</a>
             </Link>
-          </li>
-          <li>
-            <Link href = '/SetBoundPage'>
-              <a>Set Upper limit Here</a>
-            </Link> 
           </li>
         </ul>
     </div>
