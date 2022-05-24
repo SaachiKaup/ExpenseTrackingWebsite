@@ -6,15 +6,17 @@ import Categories from './src/display_components/Categories'
 import InputExpense from './src/display_components/InputExpense'
 import App from './App'
 import Link from 'next/link'
+import Card from './src/shared/Card'
 
 
 export default function Home() {
   return (
     <div className={styles.container}>
+      <Card>
         <ul>
           <li>
             <Link href = '/App'>
-              <a>App</a>
+              <a>Add Expenses</a>
             </Link>
           </li>
           <li>
@@ -28,6 +30,7 @@ export default function Home() {
             </Link>
           </li>
         </ul>
+      </Card>
     </div>
   )
 }
