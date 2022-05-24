@@ -2,7 +2,7 @@ import Categories from './src/display_components/Categories'
 import Header from './src/display_components/Header'
 import InputExpense from './src/display_components/InputExpense'
 import ViewRecent from './src/display_components/ViewRecent'
-import SetBound from './src/display_components/SetBound'
+import SetBound from './src/display_components/.SetBound'
 import Link from 'next/link'
 import RecentExpensesPage from './RecentExpensesPage'
 
