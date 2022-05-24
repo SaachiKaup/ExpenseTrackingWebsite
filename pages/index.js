@@ -22,6 +22,11 @@ export default function Home() {
               <a>View Recent Expenses</a>
             </Link>
           </li>
+          <li>
+            <Link href='/SetuTransactions' >
+              <a>View Bank Statement</a>
+            </Link>
+          </li>
         </ul>
     </div>
   )
