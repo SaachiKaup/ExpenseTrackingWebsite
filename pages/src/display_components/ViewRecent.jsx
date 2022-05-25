@@ -19,12 +19,16 @@ function ViewRecent() {
         //console.log('Backend Expenses After Deletion', backendExpenseData)
     }
     
+    //should cause problems, as it is not a pure function
+    //but lets see
     useEffect(() => {
         BackendCategories(getBackendCategories)
         BackendExpenseData(setBackendExpenseData)
         //console.log('Expense Data in View Expenses: ', backendExpenseData)
         //CategoriesData(getBackendCategories)
-    })
+    }, [])
+
+    
     return ( 
         <div className='recent-expenses-container'> {/* centralalign not working */}
         {/*<Card>here before table length increased*/}
