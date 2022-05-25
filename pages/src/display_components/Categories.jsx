@@ -1,7 +1,7 @@
 import * as React from "react";
 import {Menu, MenuItem, Fade, Button, Typography} from "@mui/material";
 import { useState, useEffect, useContext } from "react";
-import GetCurrentCategory from './GetCurrentCategory'
+import GetCurrentCategory from '../../../context/GetCurrentCategory'
 import { useRouter } from 'next/router'
 import MyButton from '../shared/Button'
 import Card from "../shared/Card";
@@ -11,7 +11,7 @@ function Categories() {
   const [anchorEl, setAnchorEl] = useState(null);
   const [category, setCategory] = useState("Categories");
   const current_category_context = useContext(GetCurrentCategory)
-  console.error('current category:', current_category_context.category)
+  console.log('current category:', current_category_context.category)
   const open = Boolean(anchorEl);
   const [backend_categories, setBackendCategories] = useState([]);
   const router = useRouter()
