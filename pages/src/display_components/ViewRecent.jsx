@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import LocalAverage from './LocalAverage'
 import ListExpenses from './ListExpenses'
-import BackendExpenseData from '../data/BackendExpenseData'
+import BackendExpenseData from '../../../data/BackendExpenseData'
 import { DeleteExpenseInBackendFromAPI } from '../../../api_call/DeleteExpenseInBackendFromAPI'
 //import CategoriesData from './CategoriesData'
-import BackendCategories from '../data/BackendCategories'
+import BackendCategories from '../../../data/BackendCategories'
 //import { get } from 'http'
 //import Card from '../shared/Card'
 

@@ -12,7 +12,7 @@ import {
   tableCellClasses
 } from "@mui/material";
 //import CategoriesData from './CategoriesData'
-import BackendCategories from '../data/BackendCategories';
+import BackendCategories from '../../../data/BackendCategories';
 //import {TableRow, TableCell} from '@material-ui/core'
 //import Card from '../shared/Card'
 

@@ -3,7 +3,7 @@ import axios from 'axios'
 import Card from './src/shared/Card'
 import Button from './src/shared/Button'
 import TextField from '@mui/material/TextField'
-import setu_transaction_data from './src/data/TransactionDataSetu.json'
+import setu_transaction_data from '../data/TransactionDataSetu.json'
 import { Table, 
         TableHead, 
         TableRow, 
@@ -16,7 +16,7 @@ import DisplaySetuTransactions from './src/display_components/setu_components/Di
 import GetSelectedTransactions from '../context/GetSelectedTransactions'
 //defaultimport AwaitCreateExpenseInBackend from './src/display_components/CreateExpenseInBackend';
 import { CreateExpenseInBackendFromAPI } from '../api_call/CreateExpenseInBackendFromAPI'
-import BackendCategories from './src/data/BackendCategories'
+import BackendCategories from '../data/BackendCategories'
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {

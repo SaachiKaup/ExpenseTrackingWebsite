@@ -4,7 +4,7 @@ import Card from '../shared/Card'
 import Button from '../shared/Button'
 //import { CreateExpenseInBackend } from './CreateExpenseInBackend';
 import { CreateExpenseInBackendFromAPI } from '../../../api_call/CreateExpenseInBackendFromAPI';
-import BackendCategories from '../data/BackendCategories';
+import BackendCategories from '../../../data/BackendCategories';
 import GetCurrentCategory from '../../../context/GetCurrentCategory';
 //import Button from '@mui/material/Button'
 
