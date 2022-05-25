@@ -1,4 +1,4 @@
-
+//Make it to Weekly Average
 function LocalAverage({ expenseData }) {
     let average = (expenseData.reduce((accumulated_sum, current) => {
         //console.log('current expense in reduce: ', current)

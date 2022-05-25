@@ -1,5 +1,5 @@
 import {React, useState, useEffect, useContext} from 'react'
-import GetCurrentCategory from '../GetCurrentCategory'
+import GetCurrentCategory from '../../../../context/GetCurrentCategory'
 import {Menu, MenuItem, Fade, Button, Typography, Checkbox} from "@mui/material";
 import {
   Table,
@@ -12,7 +12,7 @@ import {
   styled,
   tableCellClasses
 } from "@mui/material";
-import GetSelectedTransactions from '../GetSelectedTransactions';
+import GetSelectedTransactions from '../../../../context/GetSelectedTransactions';
 //Not used import CustomButton from '../../shared/Button'
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({

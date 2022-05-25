@@ -13,7 +13,7 @@ import { Table,
         tableCellClasses, 
         Typography} from '@mui/material'
 import DisplaySetuTransactions from './src/display_components/setu_components/DisplaySetuTransactions'
-import GetSelectedTransactions from './src/display_components/GetSelectedTransactions'
+import GetSelectedTransactions from '../context/GetSelectedTransactions'
 //defaultimport AwaitCreateExpenseInBackend from './src/display_components/CreateExpenseInBackend';
 import { CreateExpenseInBackend } from './src/display_components/CreateExpenseInBackend'
 import BackendCategories from './src/data/BackendCategories'
