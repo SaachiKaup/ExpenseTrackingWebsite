@@ -40,6 +40,7 @@ yarn-error.log*
 /pages/src/IDs/.setu.js
 /pages/src/display_components/.CommonExpenses.jsx
 /pages/src/display_components/setu_components/.InputPhoneNumber.jsx
+/pages/src/display_components/.UpdateBoundInBackend.jsx
 
 #local api call files
 
