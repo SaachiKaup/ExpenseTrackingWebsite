@@ -26,7 +26,7 @@ function ListExpenses({expenseData, backendCategories, handleDelete}) {
            <Table>
                <TableHead >
                     <TableRow >
-                        <StyledTableCell align="centre">
+                        <StyledTableCell align="center">
                         Expense Date
                         </StyledTableCell>
                         <StyledTableCell align="center">Amount</StyledTableCell>
