@@ -8,15 +8,6 @@
 /pages/BackupSetuTransactions.js
 
 
-
-/pages/src/data/BackendCategories.js
-/pages/src/data/BackendExpenseData.js
-/pages/src/data/BankTransactionsData.js
-/pages/src/data/ExpenseData.js
-/pages/src/data/GetConsentDetails.js
-/pages/src/data/TransactionDataSetu.json
-
-
 /pages/src/display_components/DeleteExpenseInBackend.jsx
 /pages/src/display_components/CreateExpenseInBackend.jsx
 
