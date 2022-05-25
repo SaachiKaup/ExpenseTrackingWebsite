@@ -19,7 +19,7 @@ async function BackendExpenseData(setState) {
     const axios = require('axios');
     const base_url = 'http://localhost:3000'
     let backendExpenses= [];
-    axios.get('http://localhost:3000/api/expenses').then(
+    axios.get(base_url + '/api/expenses').then(
         res => {
             res.data.forEach(expense => {
                 if (check_expense_range(expense, 'weekly')){

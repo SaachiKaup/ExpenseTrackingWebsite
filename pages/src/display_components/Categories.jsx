@@ -28,7 +28,7 @@ function Categories() {
       const axios = require('axios');
       const base_url = 'http://localhost:3000'
       let backend_categories = [];
-      axios.get('http://localhost:3000/api/categories').then(
+      axios.get(base_url + '/api/categories').then(
             res => {
               res.data.forEach(category => {
                   backend_categories.push(category.cat_name)
