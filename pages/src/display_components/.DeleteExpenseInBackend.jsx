@@ -1,4 +1,4 @@
-export default async function DeleteExpenseInBackend(expense_id) {
+async function DeleteExpenseInBackend(expense_id) {
     const axios = require('axios');
     console.log('in deletion function: ', typeof expense_id);
 
@@ -7,7 +7,7 @@ export default async function DeleteExpenseInBackend(expense_id) {
         "expense_id": expense_id
     };
     console.log('expense_data', expense_data);
-    axios.post(new URL(base_url + '/api/expenses/delete'), expense_data).then(
+    axios.post(base_url + '/api/expenses/delete', expense_data).then(
         res => {
             console.log('res data', res.data);
         }
@@ -16,5 +16,6 @@ export default async function DeleteExpenseInBackend(expense_id) {
             console.error('error data', err);
         }
         );
-    return null || expense_data; //expense_data || null
+    return (null) //expense_data || null
 }
+export default DeleteExpenseInBackend
