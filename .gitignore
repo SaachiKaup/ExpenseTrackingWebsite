@@ -39,3 +39,6 @@ yarn-error.log*
 /pages/.ConnectBankAccount.js
 /pages/src/IDs/.setu.js
 /pages/src/display_components/.CommonExpenses.jsx
+
+#Empty Files
+/pages/src/display_components/.CategoriesData.jsx
