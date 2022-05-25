@@ -2,7 +2,8 @@ import { useState, useEffect, useContext } from 'react';
 import TextField from '@mui/material/TextField';
 import Card from '../shared/Card'
 import Button from '../shared/Button'
-import { CreateExpenseInBackend } from './CreateExpenseInBackend';
+//import { CreateExpenseInBackend } from './CreateExpenseInBackend';
+import { CreateExpenseInBackendFromAPI } from '../../../api_call/CreateExpenseInBackendFromAPI';
 import BackendCategories from '../data/BackendCategories';
 import GetCurrentCategory from '../../../context/GetCurrentCategory';
 //import Button from '@mui/material/Button'
@@ -35,9 +36,9 @@ function InputExpense() {
         e.preventDefault();
         console.log('submit');
         console.log('text:', text);
-        console.log(CreateExpenseInBackend)
+        console.log(CreateExpenseInBackendFromAPI)
         console.log('category on submission:', category_context.category)
-        CreateExpenseInBackend(text, category_context.category, backendCategories);
+        CreateExpenseInBackendFromAPI(text, category_context.category, backendCategories);
         setText('');
     }
   return (
