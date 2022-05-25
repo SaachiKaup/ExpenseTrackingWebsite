@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import LocalAverage from './LocalAverage'
 import ListExpenses from './ListExpenses'
 import BackendExpenseData from '../data/BackendExpenseData'
-import { DeleteExpenseInBackend } from './DeleteExpenseInBackend'
+import { DeleteExpenseInBackendFromAPI } from '../../../api_call/DeleteExpenseInBackendFromAPI'
 //import CategoriesData from './CategoriesData'
 import BackendCategories from '../data/BackendCategories'
 //import { get } from 'http'
@@ -15,7 +15,7 @@ function ViewRecent() {
     const [backendCategories, getBackendCategories] = useState([]);
     
     const handleBackendDelete = (expense_id) => {
-        DeleteExpenseInBackend(expense_id) //bit slow
+        DeleteExpenseInBackendFromAPI(expense_id) //bit slow
         //console.log('Backend Expenses After Deletion', backendExpenseData)
     }
     
