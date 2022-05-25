@@ -47,6 +47,8 @@ yarn-error.log*
 #data files
 
 #context files
+/pages/src/display_components/.DeleteExpenseInBackend.jsx
+/pages/src/display_components/.CreateExpenseInBackend.jsx
 
 #Empty Files
 /pages/src/display_components/.CategoriesData.jsx

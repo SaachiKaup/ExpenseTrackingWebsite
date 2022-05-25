@@ -17,6 +17,8 @@
 /pages/src/data/TransactionDataSetu.json
 
 #context files
+/pages/src/display_components/.DeleteExpenseInBackend.jsx
+/pages/src/display_components/.CreateExpenseInBackend.jsx
 
 #empty files
 /pages/src/display_components/.CategoriesData.jsx
