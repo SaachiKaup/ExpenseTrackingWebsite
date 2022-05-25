@@ -13,3 +13,8 @@
 
 
 /pages/src/display_components/CategoriesData.jsx
+
+/pages/src/display_components/LocalAverage.jsx
+/pages/src/display_components/ListExpenses.jsx
+/pages/src/display_components/RecentExpense.jsx
+/pages/src/display_components/setu_components/DisplaySetuTransactions.jsx

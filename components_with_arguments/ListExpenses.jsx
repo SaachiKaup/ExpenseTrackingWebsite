@@ -21,6 +21,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 }));
 
 function ListExpenses({expenseData, backendCategories, handleDelete}) {
+    console.log("getting data from outside prerendered pages: ", expenseData)
     return (
         <div >
            <Table>

@@ -12,7 +12,8 @@ import { Table,
         styled,
         tableCellClasses, 
         Typography} from '@mui/material'
-import DisplaySetuTransactions from './src/display_components/setu_components/DisplaySetuTransactions'
+//import DisplaySetuTransactions from './src/display_components/setu_components/DisplaySetuTransactions'
+import DisplaySetuTransactions from '../components_with_arguments/DisplaySetuTransactions'
 import GetSelectedTransactions from '../context/GetSelectedTransactions'
 //defaultimport AwaitCreateExpenseInBackend from './src/display_components/CreateExpenseInBackend';
 import { CreateExpenseInBackendFromAPI } from '../api_call/CreateExpenseInBackendFromAPI'
