@@ -17,7 +17,9 @@ function check_expense_range(expense, range_string) {
 }
 async function BackendExpenseData(setState) {
     const axios = require('axios');
-    const base_url = 'http://localhost:3000'
+    //const base_url = 'http://localhost:3000'
+    const base_url = 'https://expense-tracking-website-git-master-saachikaup.vercel.app'
+    
     let backendExpenses= [];
     axios.get(base_url + '/api/expenses').then(
         res => {
