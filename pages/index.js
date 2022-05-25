@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
-import Users from './Components/UsersTableComponents/Users'
 import Categories from './src/display_components/Categories'
 import InputExpense from './src/display_components/InputExpense'
 import App from './App'
