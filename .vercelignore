@@ -21,10 +21,4 @@
 /pages/src/display_components/CreateExpenseInBackend.jsx
 
 
-/pages/Components/CategoriesTableComponents/GetCategories.jsx
-/pages/Components/ExpensesTableComponents/Expenses.jsx
-/pages/Components/UsersTableComponents/UserData.jsx
-/pages/Components/UsersTableComponents/Users.jsx
-
-
 /pages/src/display_components/CategoriesData.jsx

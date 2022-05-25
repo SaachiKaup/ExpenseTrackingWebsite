@@ -54,8 +54,3 @@ yarn-error.log*
 #Empty Files
 /pages/src/display_components/CategoriesData.jsx
 
-#Components Files
-/pages/Components/CategoriesTableComponents/GetCategories.jsx
-/pages/Components/ExpensesTableComponents/Expenses.jsx
-/pages/Components/UsersTableComponents/UserData.jsx
-/pages/Components/UsersTableComponents/Users.jsx
