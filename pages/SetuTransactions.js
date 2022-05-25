@@ -15,7 +15,7 @@ import { Table,
 import DisplaySetuTransactions from './src/display_components/setu_components/DisplaySetuTransactions'
 import GetSelectedTransactions from '../context/GetSelectedTransactions'
 //defaultimport AwaitCreateExpenseInBackend from './src/display_components/CreateExpenseInBackend';
-import { CreateExpenseInBackend } from './src/display_components/CreateExpenseInBackend'
+import { CreateExpenseInBackendFromAPI } from '../api_call/CreateExpenseInBackendFromAPI'
 import BackendCategories from './src/data/BackendCategories'
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -192,11 +192,11 @@ function SetuTransactions() {
 
     const addExpenses = async () => {
         console.log('Add Expenses: ', currentTransactions.selectedTransactions)
-        console.log(CreateExpenseInBackend) //Await
+        console.log(CreateExpenseInBackendFromAPI) //Await
         currentTransactions.selectedTransactions.forEach(selected_transaction => {
             console.log("Each Selected Transaction: ", selected_transaction)
             console.log("Categories: ", backendCategories)
-            CreateExpenseInBackend(selected_transaction[0], 
+            CreateExpenseInBackendFromAPI(selected_transaction[0], 
                 selected_transaction[1], backendCategories, selected_transaction[2])
         })
         //Send Expenses to Backend
