@@ -9,7 +9,8 @@ export async function CreateExpenseInBackendFromAPI(expense_inserted, category, 
     console.log('api_call/ creation function: ', expense_inserted);
     console.log('category while creating: ', category)
     console.log("date while creating: ", expense_date)
-    const base_url = 'http://localhost:3000';
+    //const base_url = 'http://localhost:3000';
+    const base_url = 'https://expense-tracking-website-git-master-saachikaup.vercel.app'
     const expense_data = {
         "expenses": {
             "user_id": 4,
