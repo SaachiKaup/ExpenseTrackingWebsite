@@ -37,7 +37,7 @@ yarn-error.log*
 #unused files
 /pages/src/display_components/SetBound.jsx
 /pages/ConnectBankAccount.js
-/pages/src/IDs/setu.js
+/IDs/setu.js
 /pages/src/display_components/CommonExpenses.jsx
 /pages/src/display_components/setu_components/InputPhoneNumber.jsx
 /pages/src/display_components/UpdateBoundInBackend.jsx
