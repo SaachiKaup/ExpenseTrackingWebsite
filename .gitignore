@@ -39,6 +39,13 @@ yarn-error.log*
 /pages/.ConnectBankAccount.js
 /pages/src/IDs/.setu.js
 /pages/src/display_components/.CommonExpenses.jsx
+/pages/src/display_components/setu_components/.InputPhoneNumber.jsx
+
+#local api call files
+
+#data files
+
+#context files
 
 #Empty Files
 /pages/src/display_components/.CategoriesData.jsx
