@@ -8,6 +8,12 @@
 #local api call files
 
 #data files
+pages\src\data\BackendCategories.js
+pages\src\data\BackendExpenseData.js
+pages\src\data\BankTransactionsData.js
+pages\src\data\ExpenseData.js
+pages\src\data\GetConsentDetails.js
+pages\src\data\TransactionDataSetu.json
 
 #context files
 
