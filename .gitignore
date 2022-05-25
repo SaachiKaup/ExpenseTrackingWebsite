@@ -35,20 +35,21 @@ yarn-error.log*
 .vercel
 
 #files
-/pages/src/display_components/.SetBound.jsx
-/pages/.ConnectBankAccount.js
-/pages/src/IDs/.setu.js
-/pages/src/display_components/.CommonExpenses.jsx
-/pages/src/display_components/setu_components/.InputPhoneNumber.jsx
-/pages/src/display_components/.UpdateBoundInBackend.jsx
+/pages/src/display_components/SetBound.jsx
+/pages/ConnectBankAccount.js
+/pages/src/IDs/setu.js
+/pages/src/display_components/CommonExpenses.jsx
+/pages/src/display_components/setu_components/InputPhoneNumber.jsx
+/pages/src/display_components/UpdateBoundInBackend.jsx
+/pages/BackupSetuTransactions.js
 
 #local api call files
 
 #data files
 
 #context files
-/pages/src/display_components/.CreateExpenseInBackend.jsx
-/pages/src/display_components/.DeleteExpenseInBackend.jsx
+/pages/src/display_components/CreateExpenseInBackend.jsx
+/pages/src/display_components/DeleteExpenseInBackend.jsx
 
 #Empty Files
-/pages/src/display_components/.CategoriesData.jsx
+/pages/src/display_components/CategoriesData.jsx
