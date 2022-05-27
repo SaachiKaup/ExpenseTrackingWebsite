@@ -164,12 +164,21 @@ function DisplaySetuTransactions({transaction}) {
                 ))}
                 
               </Menu>
-              <Button onClick = {handleClick}>
+              <Button 
+                  id="fade-button"
+                  variant = "contained"
+                  style={{color: "#000", backgroundColor: "white"}}
+                  className="text-input"
+                  color="primary"
+                  onClick = {handleClick}>
                   {category}
               </Button>
             </StyledTableCell>
             <StyledTableCell align='left'>
-              <Checkbox checked = {checked} onChange={handleChecked}/>
+              <Checkbox 
+                  style ={{color: "#fff"}}
+                  checked = {checked} 
+                  onChange={handleChecked}/>
             </StyledTableCell>
         </TableRow>
         </>

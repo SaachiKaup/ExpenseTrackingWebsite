@@ -72,8 +72,10 @@ function Categories() {
       <Typography align='center'>
       <Button
         id="fade-button"
-        variant = "outlined"
+        variant = "contained"
+        style={{color: "#000", backgroundColor: "white"}}
         className="text-input"
+        color="primary"
         //aria-controls={open ? "fade-menu" : undefined}
         aria-haspopup="true"
         aria-expanded={open ? "true" : undefined}
