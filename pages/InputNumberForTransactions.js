@@ -3,10 +3,10 @@ import Card from './src/shared/Card'
 import Button from './src/shared/Button'
 import React, {useState} from 'react'
 import SetuTransactions from './SetuTransactions'
-
+import axios from 'axios'
 
 const check_null_or_empty = (state_variable) => {
-    if (state_variable == null || state_variable == undefined || state_variable == '') {
+    if (state_variable == null || state_variable == undefined || state_variable == '' || state_variable == ' ') {
         return true
     } else {
         return false
@@ -21,7 +21,20 @@ const get_cropped_consent_id_from_url = (req_url) => {
     return req_url.slice(req_url.indexOf('webview/') + 8, req_url.length)
 }
 
-const get_consent_id = (userMobileNo) => {
+const get_promise = (url, id) => {
+    return new Promise(async (resolve, reject) => {
+        console.log(url + id)
+        let url_data = await axios(url + id)
+        return resolve(url_data)
+    }) //end of promise
+}
+
+const set_window_local_storage_consent_id_and_status = (consent_id) => {
+    window.localStorage.setItem('consentID', consent_id)
+    window.localStorage.setItem('consentStatus', 'PENDING')
+}
+
+const get_consent_id_promise = (userMobileNo) => {
     const url_redirect_promise = get_promise('/api/setu/consent/', userMobileNo)
     let consent_id = url_redirect_promise.then(res => {
         console.log('Promise Response: ', res)
@@ -36,7 +49,7 @@ const get_consent_with_status_and_mobile_number_from_local_storage = () => {
     const local_storage_consentID = get_local_storage_item('consentID')
     const local_storage_consentStatus = get_local_storage_item('consentStatus')
     const local_storage_userMobileNo = get_local_storage_item('userMobileNo')
-    return [local_storage_consentID, local_storage_consentStatus, local_storage_userMobileNo]
+    return [local_storage_userMobileNo, local_storage_consentID, local_storage_consentStatus]
 }
 
 function InputNumberForTransactions() {
@@ -68,7 +81,16 @@ function InputNumberForTransactions() {
                 local_storage_consentStatus] = 
         get_consent_with_status_and_mobile_number_from_local_storage()
         console.log("local storage number: ", local_storage_userMobileNo, "id: ", local_storage_consentID, "status: ", local_storage_consentStatus)
-        
+        if (check_null_or_empty(local_storage_consentID)) { 
+            console.log("consent id not currently present")
+            let consent_id_promise = get_consent_id_promise(local_storage_userMobileNo)
+            consent_id_promise.then(res => {
+                let consent_id_from_promise = res
+                console.log("ConsentID from Promise: ", consent_id_from_promise)
+                set_window_local_storage_consent_id_and_status(consent_id_from_promise)
+                
+            }).catch(err => console.log(err))
+        }
     }
 
     return (
