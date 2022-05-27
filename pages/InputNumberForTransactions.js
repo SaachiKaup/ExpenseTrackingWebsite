@@ -1,7 +1,7 @@
 import { TextField } from '@mui/material'
 import Card from './src/shared/Card'
 import Button from './src/shared/Button'
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import SetuTransactions from './SetuTransactions'
 import axios from 'axios'
 
@@ -57,6 +57,10 @@ function InputNumberForTransactions() {
     const [btnDisabled, setBtnDisabled] = useState(true)
     const [consentStatus, setConsentStatus] = useState('') //consentStatus would be a better name for consentStatus
 
+    useEffect(() => {
+        const [local_storage_userMobileNo, local_storage_consentID, local_storage_consentStatus] = get_consent_with_status_and_mobile_number_from_local_storage()
+        
+    }, []);
     const handleChange = (event) => {
         let event_target_value = event.target.value
         if (event_target_value.length == 10) {
@@ -80,13 +84,13 @@ function InputNumberForTransactions() {
                 local_storage_consentID, 
                 local_storage_consentStatus] = 
         get_consent_with_status_and_mobile_number_from_local_storage()
-        console.log("local storage number: ", local_storage_userMobileNo, "id: ", local_storage_consentID, "status: ", local_storage_consentStatus)
+        //console.log("local storage number: ", local_storage_userMobileNo, "id: ", local_storage_consentID, "status: ", local_storage_consentStatus)
         if (check_null_or_empty(local_storage_consentID)) { 
-            console.log("consent id not currently present")
+            //console.log("consent id not currently present")
             let consent_id_promise = get_consent_id_promise(local_storage_userMobileNo)
             consent_id_promise.then(res => {
                 let consent_id_from_promise = res
-                console.log("ConsentID from Promise: ", consent_id_from_promise)
+                //console.log("ConsentID from Promise: ", consent_id_from_promise)
                 set_window_local_storage_consent_id_and_status(consent_id_from_promise)
                 window.location.assign('https://fiu-uat.setu.co/consents/webview/' + consent_id_from_promise)
             }).catch(err => console.log(err))
