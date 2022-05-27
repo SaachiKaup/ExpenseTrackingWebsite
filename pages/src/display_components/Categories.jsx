@@ -61,11 +61,7 @@ function Categories() {
     }
     setAnchorEl(null)
   };
-  const onClick = (e) => {
-    e.preventDefault()
-    console.log('clicked')
-    router.push('/SetBoundPage')
-  }
+  
 
   return (
     <Card input={true}> {/*Used to be just a div with SetBound */}
