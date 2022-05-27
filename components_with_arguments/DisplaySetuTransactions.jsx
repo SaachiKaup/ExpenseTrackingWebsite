@@ -13,6 +13,7 @@ import {
   tableCellClasses
 } from "@mui/material";
 import GetSelectedTransactions from '../context/GetSelectedTransactions';
+import BackendCategories from '../data/BackendCategories';
 //Not used import CustomButton from '../../shared/Button'
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -52,24 +53,8 @@ function DisplaySetuTransactions({transaction}) {
     console.log("Current Transactions: ", currentTransactions);
     
     useEffect(() => {
-        getCategoriesFromState();
+        BackendCategories(setBackendCategories);
     }, []);
-
-    const getCategoriesFromState = () => {
-      const axios = require('axios');
-      const base_url = 'http://localhost:3000'
-      let backend_categories = [];
-      axios.get('http://localhost:3000/api/categories').then(
-            res => {
-              res.data.forEach(category => {
-                  backend_categories.push(category.cat_name)
-                  //console.log("Backend Categories:", backend_categories)
-              });
-              setBackendCategories(backend_categories);
-            }).catch(err => {
-              console.log(err);
-            })
-    }
 
     const handleClick = (event) => {
       console.log('Button Clicked', event.target.innerText);

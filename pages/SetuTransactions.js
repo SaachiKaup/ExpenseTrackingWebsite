@@ -121,7 +121,7 @@ function SetuTransactions() {
     const currentTransactions = useContext(GetSelectedTransactions)
     //const CreateExpenseInBackend = async () => await AwaitCreateExpenseInBackend()
     useEffect(() => {
-        getCategoriesFromState()
+        BackendCategories(setBackendCategories); //unmounted categories
         console.log("backendCategories: ", backendCategories)
         if (typeof window !== undefined) {
             //State updates asynchronously, no difference, just good to have
@@ -149,23 +149,6 @@ function SetuTransactions() {
             }
         }
     }, []);
-
-    const getCategoriesFromState = () => {
-      const axios = require('axios');
-      //const base_url = 'http://localhost:3000'
-      const base_url = 'https://expense-tracking-website-git-master-saachikaup.vercel.app'
-      let backend_categories = [];
-      axios.get(base_url + '/api/categories').then(
-            res => {
-              res.data.forEach(category => {
-                  backend_categories.push(category.cat_name)
-                  //console.log("Backend Categories:", backend_categories)
-              });
-              setBackendCategories(backend_categories);
-            }).catch(err => {
-              console.log(err);
-            })
-    }
 
     useEffect(() => {
         console.log("Fetch Consent updated: ", fetchedConsent)
