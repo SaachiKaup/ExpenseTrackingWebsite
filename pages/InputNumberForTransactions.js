@@ -88,8 +88,11 @@ function InputNumberForTransactions() {
                 let consent_id_from_promise = res
                 console.log("ConsentID from Promise: ", consent_id_from_promise)
                 set_window_local_storage_consent_id_and_status(consent_id_from_promise)
-                
+                window.location.assign('https://fiu-uat.setu.co/consents/webview/' + consent_id_from_promise)
             }).catch(err => console.log(err))
+        }
+        else {
+            alert("Consent ID already present in local storage")
         }
     }
 
