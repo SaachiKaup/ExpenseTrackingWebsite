@@ -59,7 +59,26 @@ function InputNumberForTransactions() {
 
     useEffect(() => {
         const [local_storage_userMobileNo, local_storage_consentID, local_storage_consentStatus] = get_consent_with_status_and_mobile_number_from_local_storage()
+        if (!check_null_or_empty(window.localStorage.getItem('userMobileNo'))) {
+            console.log("Mobile Present")
+        }
+        if (!check_null_or_empty(window.localStorage.getItem('consentID'))) {
+            console.log("In Storage ConsentID Present:", window.localStorage.getItem('consentID'))
+        }
         
+        if (!check_null_or_empty(window.localStorage.getItem('consentStatus'))) {
+            let consent_status_from_storage = window.localStorage.getItem('consentStatus')
+            setConsentStatus(consent_status_from_storage)
+            console.log('Fetched Consent: ', consentStatus)
+            if (consent_status_from_storage == 'ACTIVE') {
+                console.log("Consent is active")
+                //get_transaction_data()
+            }
+            else {
+                console.log("Inactive cosnent: Add alert")
+            }
+        }
+             
     }, []);
     const handleChange = (event) => {
         let event_target_value = event.target.value
