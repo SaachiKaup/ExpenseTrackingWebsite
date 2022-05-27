@@ -110,9 +110,10 @@ const get_transaction_data = (dataSessionID) => {
 }
 
 function SetuTransactions() {
+
     const [consentID, setConsentID] = useState('')
     const [userMobileNo, setUserMobileNo] = useState('')
-    const [fetchedConsent, setFetchedConsent] = useState('') //used to be Not Requested
+    const [consentStatus, setConsentStatus] = useState('') //used to be Not Requested
     const [dataSessionID, setDataSessionID] = useState('') 
     const [transactionData, setTransactionData] = useState([{}, {}])
     const [btnDisabled, setBtnDisabled] = useState(true)
@@ -122,7 +123,7 @@ function SetuTransactions() {
     //const CreateExpenseInBackend = async () => await AwaitCreateExpenseInBackend()
     useEffect(() => {
         BackendCategories(setBackendCategories); //unmounted categories
-        console.log("backendCategories: ", backendCategories)
+        console.log("SetuTransactions: backendCategories: ", backendCategories)
         if (typeof window !== undefined) {
             //State updates asynchronously, no difference, just good to have
             if (!check_null_or_empty(window.localStorage.getItem('userMobileNo'))) {
@@ -136,10 +137,10 @@ function SetuTransactions() {
                 console.log("After getting from storage CID: ", consentID)  
             }
             
-            if (!check_null_or_empty(window.localStorage.getItem('fetchedConsent'))) {
-                let consent_status_from_storage = window.localStorage.getItem('fetchedConsent')
-                setFetchedConsent(consent_status_from_storage)
-                console.log('Fetched Consent: ', fetchedConsent)
+            if (!check_null_or_empty(window.localStorage.getItem('consentStatus'))) {
+                let consent_status_from_storage = window.localStorage.getItem('consentStatus')
+                setConsentStatus(consent_status_from_storage)
+                console.log('Fetched Consent: ', consentStatus)
                 if (consent_status_from_storage == 'ACTIVE') {
                     //get_transaction_data()
                 }
@@ -151,8 +152,8 @@ function SetuTransactions() {
     }, []);
 
     useEffect(() => {
-        console.log("Fetch Consent updated: ", fetchedConsent)
-    }, [fetchedConsent])
+        console.log("Fetch Consent updated: ", consentStatus)
+    }, [consentStatus])
 
     const handleChange = (e) => {
         if (e.target.value.length == 10) {
@@ -188,7 +189,7 @@ function SetuTransactions() {
     }
     return (
         <>
-        {(fetchedConsent !== 'ACTIVE')? (
+        {(consentStatus !== 'ACTIVE')? (
         <Card>
             <TextField
                 id="mobile-no-input"
