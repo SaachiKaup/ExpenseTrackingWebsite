@@ -1,6 +1,6 @@
-##Expense Tracking Website made using NextJS.
+## Expense Tracking Website made using NextJS.
 
-##Backend done in Postgres with Prisma ORM.
+## Backend done in Postgres with Prisma ORM.
 
-##Live Version:
+## Live Version:
 https://expense-tracking-website-git-master-saachikaup.vercel.app/
