@@ -61,12 +61,12 @@ const get_consent_function = (userMobileNo) => {
     return consent_id
 }
 
-const get_consent_status = (consentID, consent_status) => {
+const get_consent_status = (consentID) => {
     let url_status_promise = get_promise('/api/setu/check_consent/', consentID)
     
-    url_status_promise.then(res => {
+    let consent_status = url_status_promise.then(res => {
         console.log('In promise: Response Status: ', res.data)
-        consent_status = res.data
+        //consent_status = res.data
         console.log('In promise Consent Status: ', consent_status)
         return res.data
         }).catch(err => {
@@ -74,7 +74,7 @@ const get_consent_status = (consentID, consent_status) => {
             return err
         })
     console.log("Consent status in function outside main: ", consent_status, "type: ", typeof consent_status)
-    
+    return consent_status
 }
 
 const return_consent_status = (consentID) => {
@@ -134,17 +134,23 @@ function SetuTransactions() {
                 console.log("In Storage ConsentID Present:", window.localStorage.getItem('consentID'))
                 let consent_id_from_storage = window.localStorage.getItem('consentID')
                 setConsentID(consent_id_from_storage)
-                console.log("After getting from storage CID: ", consentID)  
+                console.log("After getting from storage CID: ", consentID) 
+                let consent_status_promise = get_consent_status(consent_id_from_storage)
+                consent_status_promise.then(res => { 
+                    console.log("Consent Status: ", res)
+                    setConsentStatus(res)
+                    console.log("Consent Status: ", consentStatus)
+                }).catch(err => {})
             }
             
-            if (!check_null_or_empty(window.localStorage.getItem('consentStatus'))) {
+            /*if (!check_null_or_empty(window.localStorage.getItem('consentStatus'))) {
                 let consent_status_from_storage = window.localStorage.getItem('consentStatus')
                 setConsentStatus(consent_status_from_storage)
                 console.log('Fetched Consent: ', consentStatus)
                 if (consent_status_from_storage == 'ACTIVE') {
                     //get_transaction_data()
                 }
-            }
+            }*/
             else {
                 console.log('Please go back to the previous page and request consent again')
             }
