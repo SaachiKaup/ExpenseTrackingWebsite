@@ -23,7 +23,7 @@ async function BackendExpenseData(setState) {
     let axios_headers = {
         headers: {
             'Content-Type': 'application/json',
-            "Access-Control-Allow-Origin": "https://expense-tracking-website-git-master-saachikaup.vercel.app"
+            "Access-Control-Allow-Origin": "*"
         } 
     };
     let backendExpenses= [];

@@ -10,18 +10,19 @@ async function BackendCategories(setState) {
     let axios_headers = {
         headers: {
             'Content-Type': 'application/json',
-            "Access-Control-Allow-Origin": "https://expense-tracking-website-git-master-saachikaup.vercel.app",
+            "Access-Control-Allow-Origin": "*",
         } 
     };
-    axios.get(request_url, null, axios_headers).then(
+    axios.get('/api/categories', null, axios_headers).then(
         res => {
+            console.log("Categories Axios: ", res)
             res.data.forEach(category => {
                 backend_categories.push(category.cat_name)
                 
             });
             setState(backend_categories)
         }).catch(err => {
-            console.error(err);
+            console.error("Axios Err:", err);
     })
     //console.log('backend categories', backend_categories)
     return backend_categories || null
