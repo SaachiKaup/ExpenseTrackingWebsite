@@ -167,9 +167,9 @@ function SetuTransactions() {
         <>
         {/*below should be global variable of local storage*/}
         {(consentStatus !== 'ACTIVE')? (
-        <>
-            <h>Please Activate Consent</h>
-        </> ) : (
+        <Card>
+            <h>Please Activate / Request Consent</h>
+        </Card> ) : (
             <>
             <Table> 
                 <TableHead >
