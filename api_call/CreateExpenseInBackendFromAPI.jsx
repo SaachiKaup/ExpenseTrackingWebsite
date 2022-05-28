@@ -21,7 +21,7 @@ export async function CreateExpenseInBackendFromAPI(expense_inserted, category, 
     });
     var config = {
         method: 'post',
-        url: new URL(base_url + '/api/expenses/create'),
+        url: '/api/expenses/create',
         headers: { 
             'Content-Type': 'application/json',
             'Access-Control-Allow-Origin': "*"

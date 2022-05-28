@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from "react";
 import RecentExpenses from './RecentExpenses'
 //import {Paper} from '@material-ui/core'
 import { Table, 
@@ -21,6 +22,8 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 }));
 
 function ListExpenses({expenseData, backendCategories, handleDelete}) {
+    const [expensesState, setExpensesState] = useState(expenseData);
+    console.log('expensesState: ', expensesState)
     console.log("getting data from outside prerendered pages: ", expenseData)
     return (
         <div >

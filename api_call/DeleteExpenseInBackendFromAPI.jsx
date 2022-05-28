@@ -8,7 +8,13 @@ export async function DeleteExpenseInBackendFromAPI(expense_id) {
         "expense_id": expense_id
     };
     console.log('expense_data', expense_data);
-    axios.post(new URL(base_url + '/api/expenses/delete'), expense_data).then(
+    const axios_headers = {
+        headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': "*"
+        }
+    }
+    axios.post('/api/expenses/delete', expense_data, axios_headers).then(
         res => {
             console.log('res data', res.data);
         }

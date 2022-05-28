@@ -27,7 +27,7 @@ async function BackendExpenseData(setState) {
         } 
     };
     let backendExpenses= [];
-    axios.get(request_url, null, axios_headers).then(
+    axios.get('/api/expenses', null, axios_headers).then(
         res => {
             res.data.forEach(expense => {
                 if (check_expense_range(expense, 'weekly')){
