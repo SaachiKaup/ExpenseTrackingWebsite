@@ -5,6 +5,7 @@ import GetCurrentCategory from '../../../context/GetCurrentCategory'
 import { useRouter } from 'next/router'
 import MyButton from '../shared/Button'
 import Card from "../shared/Card";
+import BackendCategories from "../../../data/BackendCategories";
 //import { isAwaitExpression } from "typescript";
 
 function Categories() {
@@ -18,30 +19,13 @@ function Categories() {
   const [btnDisabled, setBtnDisabled] = useState(true)
   //setBackendCategories(backend_categories => GetCategoriesFromAxios([]))
   useEffect(() => {
-     getCategoriesFromState();
+    BackendCategories(setBackendCategories)
   }, []);
   const sendCategory = useEffect(() => {
       console.log('category:', category)
 
   }, [])
-  const getCategoriesFromState = () => {
-      const axios = require('axios');
-      //const base_url = 'http://localhost:3000'
-      const base_url = 'https://expense-tracking-website-git-master-saachikaup.vercel.app'
-      let backend_categories = [];
-      axios.get(base_url + '/api/categories').then(
-            res => {
-              res.data.forEach(category => {
-                  backend_categories.push(category.cat_name)
-              });
-              setBackendCategories(backend_categories);
-              setBtnDisabled(false)
-            }).catch(err => {
-              console.log(err);
-            })
-  }
   
-
   const handleClick = (event) => {
     console.log('on clicking', event.currentTarger)
     setAnchorEl(event.currentTarget);
