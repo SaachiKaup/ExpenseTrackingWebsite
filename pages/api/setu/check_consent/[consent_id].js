@@ -1,4 +1,4 @@
-export default async function(req, res) {
+export default async function check_consent_from_api(req, res) {
     var axios = require('axios')
     var config = {
         method: 'get',

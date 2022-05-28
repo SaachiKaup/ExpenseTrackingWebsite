@@ -1,4 +1,4 @@
-export default async function(req, res) {
+export default async function get_transaction_data_from_api(req, res) {
     var axios = require('axios')
     var config = {
         method: 'get',

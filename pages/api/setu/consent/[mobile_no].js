@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 
-export default async function (req, res) {
+export default async function get_consent_from_api(req, res) {
     const mobile_no = req.query.mobile_no;
     var axios = require('axios');
 

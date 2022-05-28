@@ -1,4 +1,4 @@
-export default async function(req, res) {
+export default async function start_data_session_from_api(req, res) {
     var axios = require('axios')
     
     var body = {
