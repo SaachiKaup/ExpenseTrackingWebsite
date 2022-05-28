@@ -5,8 +5,15 @@ async function BackendCategories(setState) {
     const axios = require('axios');
     //const base_url = 'http://localhost:3000'
     const base_url = 'https://expense-tracking-website-git-master-saachikaup.vercel.app'
+    const request_url = base_url + '/api/categories'
     let backend_categories = [];
-    axios.get(base_url + '/api/categories').then(
+    let axios_headers = {
+        headers: {
+            'Content-Type': 'application/json',
+            "Access-Control-Allow-Origin": "https://expense-tracking-website-git-master-saachikaup.vercel.app",
+        } 
+    };
+    axios.get(request_url, null, axios_headers).then(
         res => {
             res.data.forEach(category => {
                 backend_categories.push(category.cat_name)
