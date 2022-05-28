@@ -22,8 +22,6 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 }));
 
 function ListExpenses({expenseData, backendCategories, handleDelete}) {
-    const [expensesState, setExpensesState] = useState(expenseData);
-    console.log('expensesState: ', expensesState)
     console.log("getting data from outside prerendered pages: ", expenseData)
     return (
         <div >

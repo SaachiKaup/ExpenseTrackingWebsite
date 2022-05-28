@@ -25,10 +25,15 @@ function ViewRecent() {
     //but lets see
     useEffect(() => {
         BackendCategories(getBackendCategories)
-        BackendExpenseData(setBackendExpenseData)
+        //BackendExpenseData(setBackendExpenseData)
         //console.log('Expense Data in View Expenses: ', backendExpenseData)
         //CategoriesData(getBackendCategories)
     }, [])
+
+    useEffect((expense_data) => {
+        console.log('Updated Expense Data in View Expenses: ', backendExpenseData)
+        BackendExpenseData(setBackendExpenseData) //this will go to infinite
+        }, [backendExpenseData])
 
     
     return ( 
