@@ -106,6 +106,10 @@ const get_transaction_data = (dataSessionID) => {
     return transaction_data
 }
 
+const get_local_storage_item = (item_name) => {
+    return window.localStorage.getItem(item_name)
+}
+
 function SetuTransactions() {
     const [consentID, setConsentID] = useState('')
     const [userMobileNo, setUserMobileNo] = useState('')
@@ -122,11 +126,10 @@ function SetuTransactions() {
         console.log("SetuTransactions: backendCategories: ", backendCategories)
         if (typeof window !== undefined) {
             //State updates asynchronously, no difference, just good to have
-            if (!check_null_or_empty(window.localStorage.getItem('userMobileNo'))) {
-                console.log("Mobile Present")
-                setUserMobileNo(window.localStorage.getItem('userMobileNo'))
+            if (get_local_storage_item("consentStatus") == "ACTIVE") {
+                setConsentStatus("ACTIVE")
             }
-            if (!check_null_or_empty(window.localStorage.getItem('consentID'))) {
+            else if (!check_null_or_empty(window.localStorage.getItem('consentID'))) {
                 console.log("In Storage ConsentID Present:", window.localStorage.getItem('consentID'))
                 let consent_id_from_storage = window.localStorage.getItem('consentID')
                 setConsentID(consent_id_from_storage)
@@ -137,6 +140,10 @@ function SetuTransactions() {
                     setConsentStatus(res)
                     console.log("Consent Status: ", consentStatus)
                 }).catch(err => {})
+            }
+            else {
+                console.log("Please request consent") 
+                alert("Please request consent")
             }
         }
     }, []);
