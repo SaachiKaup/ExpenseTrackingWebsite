@@ -111,7 +111,7 @@ function InputNumberForTransactions() {
                 //console.log("ConsentID from Promise: ", consent_id_from_promise)
                 set_window_local_storage_consent_id_and_status(consent_id_from_promise)
                 console.log("Local storage: ", window.localStorage)
-                //window.location.assign('https://fiu-uat.setu.co/consents/webview/' + consent_id_from_promise)
+                window.location.assign('https://fiu-uat.setu.co/consents/webview/' + consent_id_from_promise)
             }).catch(err => console.log(err))
         }
         else {
