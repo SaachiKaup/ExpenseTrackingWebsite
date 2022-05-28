@@ -138,18 +138,6 @@ function SetuTransactions() {
                     console.log("Consent Status: ", consentStatus)
                 }).catch(err => {})
             }
-            
-            /*if (!check_null_or_empty(window.localStorage.getItem('consentStatus'))) {
-                let consent_status_from_storage = window.localStorage.getItem('consentStatus')
-                setConsentStatus(consent_status_from_storage)
-                console.log('Fetched Consent: ', consentStatus)
-                if (consent_status_from_storage == 'ACTIVE') {
-                    //get_transaction_data()
-                }
-            }*/
-            else {
-                console.log('Please go back to the previous page and request consent again')
-            }
         }
     }, []);
 
@@ -170,28 +158,11 @@ function SetuTransactions() {
     }
     return (
         <>
+        {/*below should be global variable of local storage*/}
         {(consentStatus !== 'ACTIVE')? (
-        <Card>
-            <TextField
-                id="mobile-no-input"
-                className='text-input'
-                placeholder = {'Enter Mobile Number'}
-                text = {userMobileNo}
-                onChange = {handleChange}
-                sx={{
-                    width: 250,
-                    height: 50
-                }}>
-
-            </TextField>
-            <Button className = 'submit-button-central-align' 
-                    version = 'primary' 
-                    type = 'button' 
-                    is_disabled={btnDisabled}
-                    onClick = {handleSubmit} //has to be verified
-                    >Connect Bank Acc
-            </Button>
-        </Card> ) : (
+        <>
+            <h>Please Activate Consent</h>
+        </> ) : (
             <>
             <Table> 
                 <TableHead >
