@@ -35,7 +35,11 @@ async function BackendExpenseData(setState) {
                     backendExpenses.push(expense)
                 }
             });
-            //console.log('All expenses: ', backendExpenses)
+            console.log('All expenses: ', backendExpenses)
+            backendExpenses.sort(function(a, b){
+                return new Date(b.expense_id) - new Date(a.expense_id);
+            });
+
             setState(backendExpenses)
         }).catch(err => {
             console.error(err);
