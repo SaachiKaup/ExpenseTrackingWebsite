@@ -52,7 +52,7 @@ export default async function (req, res) {
                 "DEPOSIT"
             ]
         },
-        "redirectUrl": "http://localhost:3000/SetuTransactions" //Should be page that shows transactions
+        "redirectUrl": "https://expense-tracking-website-git-master-saachikaup.vercel.app/TransactionsPage" //Should be page that shows transactions
     });
     
     
