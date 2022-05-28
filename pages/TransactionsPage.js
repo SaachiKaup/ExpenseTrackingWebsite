@@ -12,10 +12,8 @@ import { Table,
         styled,
         tableCellClasses, 
         Typography} from '@mui/material'
-//import DisplaySetuTransactions from './src/display_components/setu_components/DisplaySetuTransactions'
 import DisplaySetuTransactions from '../components_with_arguments/DisplaySetuTransactions'
 import GetSelectedTransactions from '../context/GetSelectedTransactions'
-//defaultimport AwaitCreateExpenseInBackend from './src/display_components/CreateExpenseInBackend';
 import { CreateExpenseInBackendFromAPI } from '../api_call/CreateExpenseInBackendFromAPI'
 import BackendCategories from '../data/BackendCategories'
 
@@ -36,7 +34,6 @@ const check_null_or_empty = (state_variable) => {
         return false
     }
 }
-//true: console.log('Is null or empty?: ', check_null_or_empty(consentID))
 
 const get_consent_id = (req_url) => {
     return req_url.slice(req_url.indexOf('webview/') + 8, req_url.length)
@@ -110,7 +107,6 @@ const get_transaction_data = (dataSessionID) => {
 }
 
 function SetuTransactions() {
-
     const [consentID, setConsentID] = useState('')
     const [userMobileNo, setUserMobileNo] = useState('')
     const [consentStatus, setConsentStatus] = useState('') //used to be Not Requested
@@ -120,7 +116,7 @@ function SetuTransactions() {
     const [expensesButton, setExpensesButton] = useState(false)
     const [backendCategories, setBackendCategories] = useState([])
     const currentTransactions = useContext(GetSelectedTransactions)
-    //const CreateExpenseInBackend = async () => await AwaitCreateExpenseInBackend()
+    
     useEffect(() => {
         BackendCategories(setBackendCategories); //unmounted categories
         console.log("SetuTransactions: backendCategories: ", backendCategories)
@@ -160,27 +156,6 @@ function SetuTransactions() {
     useEffect(() => {
         console.log("Fetch Consent updated: ", consentStatus)
     }, [consentStatus])
-
-    const handleChange = (e) => {
-        if (e.target.value.length == 10) {
-            setBtnDisabled(false)
-            if (window.localStorage.getItem('userMobileNo') === '') {
-            setUserMobileNo(e.target.value)
-            window.localStorage.setItem('userMobileNo', e.target.value)}
-        }
-        else {
-            setBtnDisabled(true)
-            setUserMobileNo('')
-            //window.localStorage.removeItem('userMobileNo') //maybe not needed
-        }
-        console.log('User Mobile No from storage: ', window.localStorage.getItem('userMobileNo'))
-        console.log('User Mobile No from state: ', userMobileNo)
-    }
-
-    const handleSubmit = (e) => {
-        console.log("Submit Event:", e)
-        
-    }
 
     const addExpenses = async () => {
         console.log('Add Expenses: ', currentTransactions.selectedTransactions)
