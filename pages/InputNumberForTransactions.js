@@ -6,53 +6,6 @@ import SetuTransactions from './SetuTransactions'
 import axios from 'axios'
 //Cors Error on now deleted file import GetConsentFromAPI from '../api_call/consent/GetConsentFromAPI'
 
-const check_null_or_empty = (state_variable) => {
-    if (state_variable == null || state_variable == undefined || state_variable == '' || state_variable == ' ') {
-        return true
-    } else {
-        return false
-    }
-}
-
-const get_local_storage_item = (item_name) => {
-    return window.localStorage.getItem(item_name)
-}
-
-const get_cropped_consent_id_from_url = (req_url) => {
-    return req_url.slice(req_url.indexOf('webview/') + 8, req_url.length)
-}
-
-const get_promise = (url, id) => {
-    return new Promise(async (resolve, reject) => {
-        console.log(url + id)
-        let url_data = await axios(url + id)
-        return resolve(url_data)
-    }) //end of promise
-}
-
-const set_window_local_storage_consent_id_and_status = (consent_id) => {
-    window.localStorage.setItem('consentID', consent_id)
-    window.localStorage.setItem('consentStatus', 'PENDING')
-}
-
-const get_consent_id_promise = (userMobileNo) => {
-    const url_redirect_promise = get_promise('/api/setu/consent/', userMobileNo)
-    let consent_id = url_redirect_promise.then(res => {
-        console.log('Promise Response: ', res)
-        let req_url = res.data
-        console.log('URL in Promise', req_url)
-        const consent_id_from_url = get_cropped_consent_id_from_url(req_url)
-        return consent_id_from_url}).catch(err => err)
-    return consent_id
-}
-
-const get_consent_with_status_and_mobile_number_from_local_storage = () => {
-    const local_storage_consentID = get_local_storage_item('consentID')
-    const local_storage_consentStatus = get_local_storage_item('consentStatus')
-    const local_storage_userMobileNo = get_local_storage_item('userMobileNo')
-    return [local_storage_userMobileNo, local_storage_consentID, local_storage_consentStatus]
-}
-
 function InputNumberForTransactions() {
     const [userMobileNo, setUserMobileNo] = useState('')
     const [btnDisabled, setBtnDisabled] = useState(true)
@@ -151,5 +104,53 @@ function InputNumberForTransactions() {
             )}
     </div>)
 }
+
+const check_null_or_empty = (state_variable) => {
+    if (state_variable == null || state_variable == undefined || state_variable == '' || state_variable == ' ') {
+        return true
+    } else {
+        return false
+    }
+}
+
+const get_local_storage_item = (item_name) => {
+    return window.localStorage.getItem(item_name)
+}
+
+const get_cropped_consent_id_from_url = (req_url) => {
+    return req_url.slice(req_url.indexOf('webview/') + 8, req_url.length)
+}
+
+const get_promise = (url, id) => {
+    return new Promise(async (resolve, reject) => {
+        console.log(url + id)
+        let url_data = await axios(url + id)
+        return resolve(url_data)
+    }) //end of promise
+}
+
+const set_window_local_storage_consent_id_and_status = (consent_id) => {
+    window.localStorage.setItem('consentID', consent_id)
+    window.localStorage.setItem('consentStatus', 'PENDING')
+}
+
+const get_consent_id_promise = (userMobileNo) => {
+    const url_redirect_promise = get_promise('/api/setu/consent/', userMobileNo)
+    let consent_id = url_redirect_promise.then(res => {
+        console.log('Promise Response: ', res)
+        let req_url = res.data
+        console.log('URL in Promise', req_url)
+        const consent_id_from_url = get_cropped_consent_id_from_url(req_url)
+        return consent_id_from_url}).catch(err => err)
+    return consent_id
+}
+
+const get_consent_with_status_and_mobile_number_from_local_storage = () => {
+    const local_storage_consentID = get_local_storage_item('consentID')
+    const local_storage_consentStatus = get_local_storage_item('consentStatus')
+    const local_storage_userMobileNo = get_local_storage_item('userMobileNo')
+    return [local_storage_userMobileNo, local_storage_consentID, local_storage_consentStatus]
+}
+
 
 export default InputNumberForTransactions

@@ -29,86 +29,6 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
   },
 }));
 
-const check_null_or_empty = (state_variable) => {
-    if (state_variable == null || state_variable == undefined || state_variable == '') {
-        return true
-    } else {
-        return false
-    }
-}
-//true: console.log('Is null or empty?: ', check_null_or_empty(consentID))
-
-const get_consent_id = (req_url) => {
-    return req_url.slice(req_url.indexOf('webview/') + 8, req_url.length)
-}
-
-const get_promise = (url, id) => {
-    return new Promise(async (resolve, reject) => {
-        console.log(url + id)
-        let url_data = await axios(url + id)
-        return resolve(url_data)
-    }) //end of promise
-}
-
-const get_consent_function = (userMobileNo) => {
-    const url_redirect_promise = get_promise('/api/setu/consent/', userMobileNo)
-    let consent_id = url_redirect_promise.then(res => {
-        console.log('Promise Response: ', res)
-        let req_url = res.data
-        console.log('URL in Promise', req_url)
-        const consent_id_from_url = get_consent_id(req_url)
-        return consent_id_from_url}).catch(err => err)
-    return consent_id
-}
-
-const get_consent_status = (consentID) => {
-    let url_status_promise = get_promise('/api/setu/check_consent/', consentID)
-    
-    let consent_status = url_status_promise.then(res => {
-        console.log('In promise: Response Status: ', res.data)
-        //consent_status = res.data
-        console.log('In promise Consent Status: ', consent_status)
-        return res.data
-        }).catch(err => {
-            consent_status = err
-            return err
-        })
-    console.log("Consent status in function outside main: ", consent_status, "type: ", typeof consent_status)
-    return consent_status
-}
-
-const return_consent_status = (consentID) => {
-    
-    let url_status_promise = get_promise('/api/setu/check_consent/', consentID)
-    let consent_status = url_status_promise.then(res => {
-        console.log('In promise: Response Status: ', res.data)
-        console.log('In promise Consent Status: ', consent_status)
-        return res.data
-        }).catch(err => {
-            return err
-        })
-    console.log("Consent status in function outside main: ", consent_status, "type: ", typeof consent_status)
-    return consent_status
-}
-
-const start_data_session = (consentID) => {
-    const url_data_session_promise = get_promise('/api/setu/data_session_start/', consentID)
-    let data_session_status = url_data_session_promise.then(res => {
-        console.log('Data Session Status: ', res.data)
-        return res.data
-        }).catch(err => err)
-    return data_session_status
-}
-
-const get_transaction_data = (dataSessionID) => {
-    const url_data_promise = get_promise('/api/setu/get_data/', dataSessionID)
-    let transaction_data = url_data_promise.then(res => {
-        console.log('Data: ', res.data)
-        return res.data
-        }).catch(err => err)
-    return transaction_data
-}
-
 function SetuTransactions() {
 
     const [consentID, setConsentID] = useState('')
@@ -261,6 +181,86 @@ function SetuTransactions() {
         }
     </>  //for entire main block
     )
+}
+
+const check_null_or_empty = (state_variable) => {
+    if (state_variable == null || state_variable == undefined || state_variable == '') {
+        return true
+    } else {
+        return false
+    }
+}
+//true: console.log('Is null or empty?: ', check_null_or_empty(consentID))
+
+const get_consent_id = (req_url) => {
+    return req_url.slice(req_url.indexOf('webview/') + 8, req_url.length)
+}
+
+const get_promise = (url, id) => {
+    return new Promise(async (resolve, reject) => {
+        console.log(url + id)
+        let url_data = await axios(url + id)
+        return resolve(url_data)
+    }) //end of promise
+}
+
+const get_consent_function = (userMobileNo) => {
+    const url_redirect_promise = get_promise('/api/setu/consent/', userMobileNo)
+    let consent_id = url_redirect_promise.then(res => {
+        console.log('Promise Response: ', res)
+        let req_url = res.data
+        console.log('URL in Promise', req_url)
+        const consent_id_from_url = get_consent_id(req_url)
+        return consent_id_from_url}).catch(err => err)
+    return consent_id
+}
+
+const get_consent_status = (consentID) => {
+    let url_status_promise = get_promise('/api/setu/check_consent/', consentID)
+    
+    let consent_status = url_status_promise.then(res => {
+        console.log('In promise: Response Status: ', res.data)
+        //consent_status = res.data
+        console.log('In promise Consent Status: ', consent_status)
+        return res.data
+        }).catch(err => {
+            consent_status = err
+            return err
+        })
+    console.log("Consent status in function outside main: ", consent_status, "type: ", typeof consent_status)
+    return consent_status
+}
+
+const return_consent_status = (consentID) => {
+    
+    let url_status_promise = get_promise('/api/setu/check_consent/', consentID)
+    let consent_status = url_status_promise.then(res => {
+        console.log('In promise: Response Status: ', res.data)
+        console.log('In promise Consent Status: ', consent_status)
+        return res.data
+        }).catch(err => {
+            return err
+        })
+    console.log("Consent status in function outside main: ", consent_status, "type: ", typeof consent_status)
+    return consent_status
+}
+
+const start_data_session = (consentID) => {
+    const url_data_session_promise = get_promise('/api/setu/data_session_start/', consentID)
+    let data_session_status = url_data_session_promise.then(res => {
+        console.log('Data Session Status: ', res.data)
+        return res.data
+        }).catch(err => err)
+    return data_session_status
+}
+
+const get_transaction_data = (dataSessionID) => {
+    const url_data_promise = get_promise('/api/setu/get_data/', dataSessionID)
+    let transaction_data = url_data_promise.then(res => {
+        console.log('Data: ', res.data)
+        return res.data
+        }).catch(err => err)
+    return transaction_data
 }
 
 export default SetuTransactions
