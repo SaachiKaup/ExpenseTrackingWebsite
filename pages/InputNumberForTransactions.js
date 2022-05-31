@@ -4,6 +4,7 @@ import Button from './src/shared/Button'
 import React, {useEffect, useState} from 'react'
 import SetuTransactions from './SetuTransactions'
 import axios from 'axios'
+//Cors Error on now deleted file import GetConsentFromAPI from '../api_call/consent/GetConsentFromAPI'
 
 const check_null_or_empty = (state_variable) => {
     if (state_variable == null || state_variable == undefined || state_variable == '' || state_variable == ' ') {
@@ -56,7 +57,8 @@ function InputNumberForTransactions() {
     const [userMobileNo, setUserMobileNo] = useState('')
     const [btnDisabled, setBtnDisabled] = useState(true)
     const [consentStatus, setConsentStatus] = useState('') //consentStatus would be a better name for consentStatus
-
+    //const [consentFromAPI, setConsentFromAPI] = useState(GetConsentFromAPI(9999999999));
+    console.log("GetConsentFromAPI", GetConsentFromAPI(9999999999));
     useEffect(() => {
         const [local_storage_userMobileNo, local_storage_consentID, local_storage_consentStatus] = get_consent_with_status_and_mobile_number_from_local_storage()
         if (!check_null_or_empty(window.localStorage.getItem('userMobileNo'))) {
