@@ -1,4 +1,4 @@
-export default async function check_consent_from_api(req, res) {
+export async function getServerSideProps({req, res}) {
     var axios = require('axios')
     var config = {
         method: 'get',
@@ -13,7 +13,7 @@ export default async function check_consent_from_api(req, res) {
 
     try {
     axios(config)
-        .then(function (response) {
+        .then(function (response) { //should return json
             return res.send(response.data.status)
         })
         .catch(function (error) {
