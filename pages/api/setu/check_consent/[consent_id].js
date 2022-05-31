@@ -1,4 +1,4 @@
-export async function getServerSideProps({req, res}) {
+export default async function getServerSideProps(req, res) {
     var axios = require('axios')
     var config = {
         method: 'get',
