@@ -63,7 +63,7 @@ export default async function get_consent_from_api(req, res) {
             'x-client-id': 'd6d5aca0-8b79-46de-8ac2-0f572be84273', 
             'x-client-secret': 'b45f3b49-06de-42f5-a816-3e137427c406', 
             'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': "https://fiu-uat.setu.co"
+            'Access-Control-Allow-Origin': "*" //https://fiu-uat.setu.co
         },
         data : data
     };
