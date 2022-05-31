@@ -58,7 +58,7 @@ function InputNumberForTransactions() {
     const [btnDisabled, setBtnDisabled] = useState(true)
     const [consentStatus, setConsentStatus] = useState('') //consentStatus would be a better name for consentStatus
     //const [consentFromAPI, setConsentFromAPI] = useState(GetConsentFromAPI(9999999999));
-    console.log("GetConsentFromAPI", GetConsentFromAPI(9999999999));
+    //console.log("GetConsentFromAPI", GetConsentFromAPI(9999999999));
     useEffect(() => {
         const [local_storage_userMobileNo, local_storage_consentID, local_storage_consentStatus] = get_consent_with_status_and_mobile_number_from_local_storage()
         if (!check_null_or_empty(window.localStorage.getItem('userMobileNo'))) {
