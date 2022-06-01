@@ -4,14 +4,17 @@ import Button from './src/shared/Button'
 import React, {useEffect, useState} from 'react'
 import SetuTransactions from './SetuTransactions'
 import axios from 'axios'
+//Axios in useEffect, didnt work import consent_axios_config from '../data/setu_data_json/consent_axios_config'
 //Cors Error on now deleted file import GetConsentFromAPI from '../api_call/consent/GetConsentFromAPI'
 
 function InputNumberForTransactions() {
     const [userMobileNo, setUserMobileNo] = useState('')
     const [btnDisabled, setBtnDisabled] = useState(true)
-    const [consentStatus, setConsentStatus] = useState('') //consentStatus would be a better name for consentStatus
-    //const [consentFromAPI, setConsentFromAPI] = useState(GetConsentFromAPI(9999999999));
-    //console.log("GetConsentFromAPI", GetConsentFromAPI(9999999999));
+    const [consentStatus, setConsentStatus] = useState('') 
+    // console.log("consent json: ", consent_axios_config);
+    //const consent_axios_config_with_mobile_number = add_number_to_json_object(consent_axios_config)
+    // console.log("consent json: ", consent_axios_config_with_mobile_number);
+
     useEffect(() => {
         const [local_storage_userMobileNo, local_storage_consentID, local_storage_consentStatus] = get_consent_with_status_and_mobile_number_from_local_storage()
         if (!check_null_or_empty(window.localStorage.getItem('userMobileNo'))) {
@@ -153,4 +156,9 @@ const get_consent_with_status_and_mobile_number_from_local_storage = () => {
 }
 
 
+const add_number_to_json_object = (json_object) => {
+    let mobile_no = "9619190931"
+    json_object["data"]["Detail"]["Customer"]["id"] = mobile_no + "@onemoney"
+    return json_object
+}
 export default InputNumberForTransactions
