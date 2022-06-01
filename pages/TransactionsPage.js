@@ -120,7 +120,11 @@ function SetuTransactions() {
     const [expensesButton, setExpensesButton] = useState(false)
     const [backendCategories, setBackendCategories] = useState([])
     const currentTransactions = useContext(GetSelectedTransactions)
-    
+   
+    //Temporary for Display
+    useEffect(() => {
+        window.localStorage.setItem('consentStatus', "ACTIVE")
+    }, [])
     useEffect(() => {
         BackendCategories(setBackendCategories); //unmounted categories
         console.log("SetuTransactions: backendCategories: ", backendCategories)
