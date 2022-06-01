@@ -24,7 +24,7 @@ export default function Home() {
             </Link>
           </li>
           <li>
-            <Link href='/InputNumberForTransactions' >
+            <Link href='/TransactionsPage' >
               <a>View Bank Statement</a>
             </Link>
           </li>
