@@ -4,10 +4,13 @@ import Card from '../src/shared/Card'
 import Button from '../src/shared/Button'
 
 function Registration() {
-  const { register } = useForm();
+  const { register, handleSubmit } = useForm();
+
   return (
     <Card>
-    <form>
+      <form onSubmit={handleSubmit((formData) => {
+        console.log("FormData: ", formData)
+      })}>
       <div>
         <label htmlFor="name">  Name  </label>
         <input  {...register("name", { required: true})}/>
@@ -21,7 +24,7 @@ function Registration() {
         <input  {...register("mobile_number", { required: true})}/>
       </div>
       <div>
-        <button type = "submit">Register</button>
+        <button type = "submit" >Register</button>
       </div>
     </form>
     </Card>
