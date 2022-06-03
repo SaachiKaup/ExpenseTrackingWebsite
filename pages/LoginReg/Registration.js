@@ -24,11 +24,6 @@ function Registration() {
         <input  {...register("mobile_number", { required: true})}/>
       </div>
       <div>
-        <label htmlFor="password">  Password </label>
-        <input  {...register("password", 
-          { required: true, })}/>
-      </div>
-      <div>
         <button type = "submit" >Register</button>
       </div>
     </form>
