@@ -10,9 +10,9 @@ export default async function create_users(req: NextApiRequest, res: NextApiResp
         const user = await prisma.users.create({
         data: {
             user_id: userData.user_id,
-            first_name: userData.first_name,
-            last_name: userData.last_name,
-            age: userData.age
+            name: userData.name,
+            email: userData.email,
+            mobile_number: userData.mobile_number,
         },
         });
     
