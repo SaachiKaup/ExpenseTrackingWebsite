@@ -36,11 +36,10 @@ model set_bound {
 }
 
 model users {
-  user_id    Int         @id @default(autoincrement())
-  first_name String      @db.VarChar(50)
-  last_name  String      @db.VarChar(50)
-  age        Int
-  email      String?     @unique @db.VarChar(100)
-  expenses   expenses[]
-  set_bound  set_bound[]
+  user_id       Int         @id @default(autoincrement())
+  name          String      @db.VarChar(50)
+  email         String?     @unique @db.VarChar(100)
+  mobile_number String?     @db.VarChar(10)
+  expenses      expenses[]
+  set_bound     set_bound[]
 }
