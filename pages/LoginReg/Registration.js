@@ -10,6 +10,7 @@ function Registration() {
     <Card>
       <form onSubmit={handleSubmit((formData) => {
         console.log("FormData: ", formData)
+
       })}>
       <div>
         <label htmlFor="name">  Name  </label>
@@ -21,7 +22,11 @@ function Registration() {
       </div>
       <div>
         <label htmlFor="mobile_number">  Mobile Number </label>
-        <input  {...register("mobile_number", { required: true})}/>
+        <input  {...register("mobile_number", 
+          { required: true, 
+            pattern: /^[0-9]{10}$/,
+            minLength: 10
+          })}/>
       </div>
       <div>
         <button type = "submit" >Register</button>
