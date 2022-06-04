@@ -2,6 +2,7 @@ import React, {useState, useEffect, useRef} from 'react'
 import { useForm } from 'react-hook-form'
 import Card from '../src/shared/Card'
 import Button from '../src/shared/Button'
+import { CreateUserInBackendFromAPI } from '../../api_call/CreateUserInBackendFromAPI'
 
 function Registration() {
   const { register, handleSubmit} = useForm();
@@ -10,7 +11,7 @@ function Registration() {
     <Card>
       <form onSubmit={handleSubmit((formData) => {
         console.log("FormData: ", formData)
-
+        CreateUserInBackendFromAPI(formData)
       })}>
       <div>
         <label htmlFor="name">  Name  </label>
