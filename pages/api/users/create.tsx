@@ -1,12 +1,11 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { PrismaClient } from "@prisma/client";
-import CurrentUserIDContext from "../../../context/CurrentUserIDContext";
 
 export default async function create_users(req: NextApiRequest, res: NextApiResponse) {
     const prisma = new PrismaClient({log: ["query"]});
-    //console.log("Current user to add: " + CurrentUserIDContext);
-    const num_current_users = await prisma.users.count();
-    try {
+
+    const num_current_users = await prisma.users.count(); //async but works fine
+    try { 
         const {users: userData} = req.body
         const user = await prisma.users.create({
             data: {
