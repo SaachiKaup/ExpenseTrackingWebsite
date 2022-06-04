@@ -11,7 +11,8 @@ function Registration() {
     <Card>
       <form onSubmit={handleSubmit((formData) => {
         console.log("FormData: ", formData)
-        CreateUserInBackendFromAPI(formData)
+        CreateUserInBackendFromAPI(formData);
+        alert("You've Registered!"); //should redirect to expenses page
       })}>
       <div>
         <label htmlFor="name">  Name  </label>
