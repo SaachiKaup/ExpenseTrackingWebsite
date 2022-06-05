@@ -12,7 +12,7 @@ function Registration() {
       <form onSubmit={handleSubmit((formData) => {
         console.log("FormData: ", formData)
         CreateUserInBackendFromAPI(formData);
-        alert("You've Registered!"); //should redirect to expenses page
+        window.location.assign('../')
       })}>
       <div>
         <label htmlFor="name">  Name  </label>
