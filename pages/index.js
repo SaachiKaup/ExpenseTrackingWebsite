@@ -6,6 +6,7 @@ import InputExpense from './src/display_components/InputExpense'
 import App from './App'
 import Link from 'next/link'
 import Card from './src/shared/Card'
+import MainMenu from './MainMenu'
 import { Auth0Provider } from '@auth0/auth0-react'
 
 const domain = process.env.REACT_APP_AUTH0_DOMAIN
@@ -16,29 +17,9 @@ export default function Home() {
     <Auth0Provider
       domain = {domain}
       clientId = {clientId}
-      redirectUri = {window.location.origin}
+      redirectUri = {'/'}
     >
-    <div className={styles.container}>
-      <Card>
-        <ul>
-          <li>
-            <Link href = '/App'>
-              <a>Add Expenses</a>
-            </Link>
-          </li>
-          <li>
-            <Link href='/RecentExpensesPage' >
-              <a>View Recent Expenses</a>
-            </Link>
-          </li>
-          <li>
-            <Link href='/TransactionsPage' >
-              <a>View Bank Statement</a>
-            </Link>
-          </li>
-        </ul>
-      </Card>
-    </div>
+      <MainMenu />
     </Auth0Provider>
   )
 }
