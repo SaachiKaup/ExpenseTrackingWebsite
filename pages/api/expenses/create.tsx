@@ -7,7 +7,8 @@ export default async function create_expense(req: NextApiRequest, res: NextApiRe
     
     try {
         const {expenses: expenseData} = req.body
-        console.log('expenseData: ', expenseData) 
+        console.log('expenseData: ', expenseData)
+        console.log("user id in api: ", expenseData.user_id) 
         const expense = await prisma.expenses.create({
         data: {
             user_id: expenseData.user_id,
