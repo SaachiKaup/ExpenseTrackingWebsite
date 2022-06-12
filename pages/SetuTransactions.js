@@ -58,7 +58,7 @@ function SetuTransactions() {
                 let consent_status_promise = get_consent_status(consent_id_from_storage)
                 consent_status_promise.then(res => { 
                     console.log("Consent Status: ", res)
-                    setConsentStatus(res)
+                    setConsentStatus(res) //give better name
                     console.log("Consent Status: ", consentStatus)
                 }).catch(err => {})
             }
