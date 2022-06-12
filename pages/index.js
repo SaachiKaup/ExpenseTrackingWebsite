@@ -6,10 +6,18 @@ import InputExpense from './src/display_components/InputExpense'
 import App from './App'
 import Link from 'next/link'
 import Card from './src/shared/Card'
+import { Auth0Provider } from '@auth0/auth0-react'
 
+const domain = process.env.REACT_APP_AUTH0_DOMAIN
+const clientId = process.env.REACT_APP_AUTH0_CLIENTID
 
 export default function Home() {
   return (
+    <Auth0Provider
+      domain = {domain}
+      clientId = {clientId}
+      redirectUri = {window.location.origin}
+    >
     <div className={styles.container}>
       <Card>
         <ul>
@@ -31,5 +39,6 @@ export default function Home() {
         </ul>
       </Card>
     </div>
+    </Auth0Provider>
   )
 }
