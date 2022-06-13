@@ -12,7 +12,7 @@ export default function Home() {
     <Auth0Provider
       domain = {domain}
       clientId = {clientId}
-      redirectUri = {window.location.origin}
+     //edirectUri = {window.location.origin}
       //redirectUri = {'http://localhost:3000'} //window.location.origin worked before
     >
       <Login />
