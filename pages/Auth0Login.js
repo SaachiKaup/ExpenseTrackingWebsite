@@ -5,7 +5,7 @@ import Link from 'next/link';
 function Auth0Login() {
     return (
         <>
-        <Link href = "/api/auth/login">Log In </Link>
+        <Link href = "https://expense-tracking-website-git-master-saachikaup.vercel.app/api/auth/login">Log In </Link>
         </>
     )
 }
