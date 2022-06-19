@@ -4,7 +4,7 @@ import InputExpense from './src/display_components/InputExpense'
 import ViewRecent from './src/display_components/ViewRecent'
 import Link from 'next/link'
 import RecentExpensesPage from './RecentExpensesPage'
-
+import { withPageAuthRequired } from '@auth0/nextjs-auth0';
 
 function App() {
     return (
@@ -16,7 +16,7 @@ function App() {
         </>
     )
 }
-export default App
+export default withPageAuthRequired(App);
 /* From Line 17
 <Link href="/RecentExpensesPage">
             <a>View Recent Expenses</a>

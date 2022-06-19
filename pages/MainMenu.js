@@ -6,8 +6,9 @@ import InputExpense from './src/display_components/InputExpense'
 import App from './App'
 import Link from 'next/link'
 import Card from './src/shared/Card'
+import { withPageAuthRequired } from '@auth0/nextjs-auth0';
 
-export default function Menu() {
+function Menu() {
   return (
     <div className={styles.container}>
       <Card>
@@ -38,3 +39,6 @@ export default function Menu() {
     </div>
   )
 }
+
+export default withPageAuthRequired(Menu);
+// export const getServerSideProps = withPageAuthRequired();
