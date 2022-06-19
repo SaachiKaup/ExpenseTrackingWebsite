@@ -27,6 +27,12 @@ export default function Menu() {
               <a>View Bank Statement</a>
             </Link>
           </li>
+          <li>
+            <Link href='/api/auth/logout' >
+              <a>Logout</a>
+            </Link>
+          </li>
+
         </ul>
       </Card>
     </div>
