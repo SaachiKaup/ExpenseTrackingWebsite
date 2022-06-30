@@ -12,6 +12,7 @@ function Menu() {
   return (
     <div className={styles.container}>
       <Card>
+        <div className={styles.grid}>
         <ul>
           <li>
             <Link href = '/App'>
@@ -35,6 +36,7 @@ function Menu() {
           </li>
 
         </ul>
+        </div>
       </Card>
     </div>
   )
