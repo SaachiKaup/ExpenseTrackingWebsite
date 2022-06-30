@@ -1,5 +1,11 @@
 .container {
-  padding: 0 2rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  align-self: center;
+  justify-content: center;
+  justify-self:center;
+  padding: auto;
 }
 
 .main {
