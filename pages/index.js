@@ -3,6 +3,7 @@ import Auth0Login from './Auth0Login'
 import { useUser } from '@auth0/nextjs-auth0'
 import Menu from './MainMenu.js'
 import Card from './src/shared/Card';
+import styles from '../styles/Home.module.css'
 
 export default function Home() {
   const { user, error, isLoading } = useUser();
@@ -10,17 +11,17 @@ export default function Home() {
   if (isLoading) 
     return (
       <Card>
-        <div>Loading...</div>
+        <div className={styles.grid}>Loading...</div>
       </Card>
     );
 
   if (error) 
     return (
       <Card>
-        <div>{error.message}</div>
+        <div className={styles.grid}>{error.message}</div>
       </Card>
     );
-    
+
   if (user) {
     return (
       <>
