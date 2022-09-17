@@ -5,39 +5,59 @@ import Categories from './src/display_components/Categories'
 import InputExpense from './src/display_components/InputExpense'
 import App from './App'
 import Link from 'next/link'
-import Card from './src/shared/Card'
+import CustomCard from './src/shared/Card'
+import {Card, MenuList, MenuItem} from '@mui/material'
 import { withPageAuthRequired } from '@auth0/nextjs-auth0';
+import Header from './src/display_components/Header'
 
 function Menu() {
   return (
     <div className={styles.container}>
-      <Card>
-        <div className={styles.grid}>
-        <ul>
-          <li>
-            <Link href = '/App'>
-              <a>Add Expenses</a>
-            </Link>
-          </li>
-          <li>
-            <Link href='/RecentExpensesPage' >
-              <a>View Recent Expenses</a>
-            </Link>
-          </li>
-          <li>
-            <Link href='/TransactionsPage' >
-              <a>View Bank Statement</a>
-            </Link>
-          </li>
-          <li>
-            <Link href='/api/auth/logout' >
-              <a>Logout</a>
-            </Link>
-          </li>
-
-        </ul>
+      <CustomCard>
+        <div className={styles.title}>
+        <Header text = "MAIN MENU"/>
         </div>
-      </Card>
+        <div className={styles.grid}>
+          <Card
+            sx={{
+                bgcolor: 'background.paper',
+                boxShadow: 1,
+                borderRadius: 2,
+                minWidth: 200,
+                minHeight: 150,
+                textcolor: 'black'
+              }}
+          >
+          <div className={styles.grid}>
+          <MenuList>
+            <MenuItem>
+              <Link href = '/App'>
+                <a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  Add Expenses</a>
+              </Link>
+            </MenuItem>
+            <MenuItem>
+              <Link href='/RecentExpensesPage' >
+                <a>View Recent Expenses</a>
+              </Link>
+            </MenuItem>
+            <MenuItem>
+              <Link href='/TransactionsPage' >
+                <a>View Bank Statement</a>
+              </Link>
+            </MenuItem>
+            <MenuItem>
+              <Link href='/api/auth/logout' >
+                <a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  Logout&nbsp;&nbsp;&nbsp;</a>
+              </Link>
+            </MenuItem>
+
+          </MenuList>
+          </div>
+        </Card>
+      </div>
+    </CustomCard>
     </div>
   )
 }

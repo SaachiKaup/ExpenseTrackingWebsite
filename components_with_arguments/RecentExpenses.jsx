@@ -55,7 +55,7 @@ function RecentExpenses({expense, backendCategories, handleDelete}) {
               key={expense.expense_id}
               //sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
             >
-              <StyledTableCell align="left">
+              <StyledTableCell align="center">
                 {required_expense_date}
               </StyledTableCell>
               <StyledTableCell align="center">{expense.daily_amt}</StyledTableCell>
