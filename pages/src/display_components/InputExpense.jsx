@@ -1,13 +1,19 @@
 import { useState, useEffect, useContext } from 'react';
 import TextField from '@mui/material/TextField';
 import Card from '../shared/Card'
-import Button from '../shared/Button'
+import CustomButton from '../shared/Button'
 //import { CreateExpenseInBackend } from './CreateExpenseInBackend';
 import { CreateExpenseInBackendFromAPI } from '../../../api_call/CreateExpenseInBackendFromAPI';
 import BackendCategories from '../../../data/BackendCategories';
 import GetCurrentCategory from '../../../context/GetCurrentCategory';
-//import Button from '@mui/material/Button'
+import Button from '@mui/material/Button'
+import { styled } from '@mui/material';
 
+const BootstrapButton = styled(Button)({
+  backgroundColor: '#0063cc',
+  textColor: '#000000',
+  borderColor: '#0063cc',
+})
 
 function InputExpense() {
   const category_context = useContext(GetCurrentCategory)
@@ -56,14 +62,14 @@ function InputExpense() {
             height: 50
           }}
         > </TextField>
-        
-        <Button className = 'submit-button-central-align' 
-                version = 'secondary' 
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <CustomButton className = 'submit-button-central-align' 
+                version = 'primary' 
                 type = 'button' 
                 is_disabled={btnDisabled}
                 onClick = {handleSubmit} //has to be verified
-                >Log Expense</Button>
-        
+                >Log Expense</CustomButton>
+        </div>
     </Card>
   )
 }
